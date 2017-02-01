@@ -186,7 +186,7 @@ void RealHighlighter::highlightBlock(const QString &text)
         }
     }
 
-    if((m_dictionary=="js" &&(m_dictionary=="qml"))){
+    if((m_dictionary=="js" || (m_dictionary=="qml"))){
         QTextCharFormat tmpFormat;
         enum {
             Start = 0,
