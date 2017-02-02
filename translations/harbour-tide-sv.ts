@@ -221,19 +221,19 @@
     </message>
     <message>
         <source>Start as root script</source>
-        <translation type="unfinished"></translation>
+        <translation>Starta som root-skript</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation type="unfinished"></translation>
+        <translation>Översättningar</translation>
     </message>
     <message>
         <source>Swedish</source>
-        <translation type="unfinished"></translation>
+        <translation>Svenska</translation>
     </message>
     <message>
         <source>Dutch</source>
-        <translation type="unfinished"></translation>
+        <translation>Holländska</translation>
     </message>
 </context>
 <context>
@@ -362,7 +362,7 @@
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Inställningar</translation>
+        <translation>Inställningar</translation>
     </message>
 </context>
 <context>
