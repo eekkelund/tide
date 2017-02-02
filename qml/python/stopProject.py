@@ -2,21 +2,37 @@
 # -*- coding: utf-8 -*-
 
 import pyotherside
-import os, pty, sys
+import os, pty, sys, glob
 from select import select
 from subprocess import PIPE, Popen, STDOUT
 from threading import Thread
 import signal
 
-project =None
+projectqml =None
 process =None
 bgthread =None
 trace=None
 plugins=None
 
-def set_path(project_path):
-    global project
-    project = project_path
+def set_path(project_path, project_name):
+    global projectqml
+    projectqml = ""
+    # Find main qml file
+    if(os.path.isfile(project_path +"/qml/"+ project_name +".qml")):
+        projectqml = project_path +"/qml/"+ project_name+".qml"
+    elif(os.path.isfile(project_path+"/qml/main.qml")):
+         projectqml = project_path+"/qml/main.qml"
+    elif(os.path.isfile(project_path+"/qml/harbour-"+ project_name +".qml")):
+        projectqml = project_path+"/qml/harbour-"+ project_name +".qml"
+    elif(os.path.isfile(project_path +"/qml/" + project_name.replace("harbour-", "") +".qml")):
+        projectqml = project_path +"/qml/" + project_name.replace("harbour-", "") +".qml"
+    elif(os.path.isfile(project_path +"/src/qml/"+ project_name +".qml")):
+        projectqml = project_path +"/src/qml/"+ project_name+".qml"
+    elif(os.path.isfile(project_path +"/src/qml/main.qml")):
+        projectqml = project_path +"/src/qml/main.qml"
+    else:
+        for file in glob.glob(project_path +"/qml/*" + ".qml"):
+            projectqml = file
     return "path added"
 
 def run_process():
@@ -27,7 +43,7 @@ def run_process():
         new_env['QML_IMPORT_TRACE'] = '1'#if user wants trace
     elif(plugins):
         new_env['QT_DEBUG_PLUGINS']='1'#if user wants plugins log
-    process = Popen(["qmlscene", project], stdin=slave_fd, stdout=slave_fd, stderr=STDOUT, bufsize=0, close_fds=True, env=new_env )
+    process = Popen(["qmlscene", projectqml], stdin=slave_fd, stdout=slave_fd, stderr=STDOUT, bufsize=0, close_fds=True, env=new_env )
     pyotherside.send('pid', process.pid)
     timeout = .1
     with os.fdopen(master_fd, 'r+b', 0) as master:

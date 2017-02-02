@@ -76,7 +76,7 @@ Page {
                     pid=pidi
                 });
                 importModule('stopProject', function () {
-                    py.call('stopProject.set_path', [projectQmlPath],function(result) {});
+                    py.call('stopProject.set_path', [(projectPath +"/" + projectName), projectName],function(result) {});
                     py.call('stopProject.init', [trace, plugins], function(result) {});
                     py.call('stopProject.start_proc', [], function(result) {});
                 });

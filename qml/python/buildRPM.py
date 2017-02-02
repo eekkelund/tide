@@ -38,8 +38,12 @@ def getReady(projectName, buildPath, projectPath):
     version=re.search('(?<=Version:).*',spectxt).group(0).strip()
     global name
     name = re.search('(?<=Name:).*',spectxt).group(0).strip()
-    with tarfile.open(name+"-"+version+".tar.bz2", "w:bz2") as tar:
-           tar.add(projectPath+"/"+ projectName, arcname=name)#os.path.basename(projectPath+"/"+ projectName))
+    if("version" in re.search('(?<=%setup -q -n %{).*',spectxt).group(0).strip()):#if spec file prep includes version
+        with tarfile.open(name+"-"+version+".tar.bz2", "w:bz2") as tar:
+            tar.add(projectPath+"/"+ projectName, arcname=name+"-"+version)#os.path.basename(projectPath+"/"+ projectName))
+    else:#if it doesnt include
+        with tarfile.open(name+"-"+version+".tar.bz2", "w:bz2") as tar:
+            tar.add(projectPath+"/"+ projectName, arcname=name)#os.path.basename(projectPath+"/"+ projectName))
     shutil.move(name+"-"+version+".tar.bz2", buildPath+"/SOURCES/"+name+"-"+version+".tar.bz2")
     shutil.copy(specfile, buildPath+"/SPECS/"+name+".spec")
     global buildP
