@@ -233,7 +233,7 @@
     </message>
     <message>
         <source>The Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Redigeraren</translation>
     </message>
     <message>
         <source>Line numbers</source>
@@ -370,11 +370,11 @@
     </message>
     <message>
         <source>untitled</source>
-        <translation type="unfinished"></translation>
+        <translation>namnlös</translation>
     </message>
     <message>
         <source>New file</source>
-        <translation type="unfinished"></translation>
+        <translation>Ny fil</translation>
     </message>
     <message>
         <source>About &amp; Help</source>
@@ -651,7 +651,7 @@
     </message>
     <message>
         <source>Real tab</source>
-        <translation>Äkta tab</translation>
+        <translation>Äkta tabulator</translation>
     </message>
     <message>
         <source>spaces</source>
@@ -659,15 +659,15 @@
     </message>
     <message>
         <source>Tiny</source>
-        <translation type="unfinished"></translation>
+        <translation>Mycket liten</translation>
     </message>
     <message>
         <source>ExtraLarge</source>
-        <translation type="unfinished"></translation>
+        <translation>Extra stor</translation>
     </message>
     <message>
         <source>Huge</source>
-        <translation type="unfinished"></translation>
+        <translation>Enorm</translation>
     </message>
 </context>
 </TS>
