@@ -90,10 +90,21 @@ Page{
         else{
             if(!hadArgs){
                 var args = Qt.application.arguments
-                if (args.length > 1) {
-                    filePath=args[1]
-                    hadArgs = true
-                    pageStack.push(Qt.resolvedUrl("EditorPage.qml"),{fullFilePath: args[1]})
+                if(editorMode){
+                    if (args.length > 1) {
+                        filePath=args[1]
+                        hadArgs = true
+                        pageStack.replace(Qt.resolvedUrl("EditorPage.qml"),{fullFilePath: args[1]},PageStackAction.Immediate)
+                    }else{
+                        pageStack.replace(Qt.resolvedUrl("EditorPage.qml"),{},PageStackAction.Immediate)
+                    }
+                }
+                else {
+                    if (args.length > 1) {
+                        filePath=args[1]
+                        hadArgs = true
+                        pageStack.push(Qt.resolvedUrl("EditorPage.qml"),{fullFilePath: args[1]})
+                    }
                 }
             }
         }

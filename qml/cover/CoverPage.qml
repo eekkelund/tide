@@ -32,7 +32,7 @@ CoverBackground {
                sourceSize.height: height
 
                function closestMatchingIcon() {
-                   var icon = "harbour-tide"
+                   var icon = app
                    if(rootMode) icon = icon+"-root"
 
                    if (width <= 500) {
@@ -46,7 +46,7 @@ CoverBackground {
         }
         Label {
             anchors.horizontalCenter: parent.horizontalCenter
-            text: rootMode ? "root@tIDE" : "tIDE"
+            text: rootMode ? "root@tIDE" : editorMode ? "tIDEditor":"tIDE"
         }
     }
 }

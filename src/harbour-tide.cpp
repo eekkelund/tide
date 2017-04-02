@@ -39,10 +39,12 @@ int main(int argc, char *argv[])
     qmlRegisterType<KeyboardShortcut>("harbour.tide.keyboardshortcut", 1, 0, "KeyboardShortcut");
     QGuiApplication *app = SailfishApp::application(argc, argv);
     app->setApplicationVersion(QString(APP_VERSION));
+    QString appName = QFileInfo(QGuiApplication::applicationFilePath()).fileName();
     QQuickView *view = SailfishApp::createView();
     QQmlEngine *engine = view->engine();
     engine->addImageProvider(QLatin1String("ownIcons"), new IconProvider);
     view->rootContext()->setContextProperty("root", root);
+    view->rootContext()->setContextProperty("appName", appName);
     view->setSource(SailfishApp::pathTo("qml/harbour-tide.qml"));
     view->showFullScreen();
 

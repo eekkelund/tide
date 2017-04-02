@@ -116,10 +116,6 @@
         <translation>Textigenkänning (QML, JS &amp; Python)</translation>
     </message>
     <message>
-        <source>Line numbers (experimental)</source>
-        <translation>Radnummer (experimentell)</translation>
-    </message>
-    <message>
         <source>Autosave</source>
         <translation>Spara automatiskt</translation>
     </message>
@@ -234,6 +230,14 @@
     <message>
         <source>Dutch</source>
         <translation>Holländska</translation>
+    </message>
+    <message>
+        <source>The Editor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Line numbers</source>
+        <translation type="unfinished">Radnummer</translation>
     </message>
 </context>
 <context>
@@ -363,6 +367,18 @@
     <message>
         <source>Settings</source>
         <translation>Inställningar</translation>
+    </message>
+    <message>
+        <source>untitled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>About &amp; Help</source>
+        <translation type="unfinished">Om &amp; Hjälp</translation>
     </message>
 </context>
 <context>
@@ -640,6 +656,18 @@
     <message>
         <source>spaces</source>
         <translation>Blanksteg</translation>
+    </message>
+    <message>
+        <source>Tiny</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ExtraLarge</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Huge</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

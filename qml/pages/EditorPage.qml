@@ -28,10 +28,12 @@ Page {
     property bool searched: false
     property bool shortcutUsed: false
     property bool ready: false
-    property string fileTitle: singleFile
+    property string fileTitle:fullFilePath? singleFile:qsTr("untitled")
+    property bool untitled:fullFilePath?false:true
     property string fullFilePath
     property string previousPath:fullFilePath.replace(fileTitle, "")
     property bool inSplitView: false
+    property string ext: ""
     //Check if file ends with tilde "~" and change the filetype accordingly
     property string fileType: /~$/.test(fileTitle) ? fileTitle.split(".").slice(-1)[0].slice(0, -1) :fileTitle.split(".").slice(-1)[0]
     property var lineNumberList: documentHandler.lines
@@ -39,6 +41,13 @@ Page {
     property alias myeditor: myeditor
     property alias drawer:drawer
     property alias restoreD:restoreD
+
+    onFullFilePathChanged:{
+        fileTitle=fullFilePath? singleFile:qsTr("untitled")
+        untitled=fullFilePath?false:true
+        previousPath=fullFilePath.replace(fileTitle, "")
+        fileType= /~$/.test(fileTitle) ? fileTitle.split(".").slice(-1)[0].slice(0, -1) :fileTitle.split(".").slice(-1)[0]
+    }
 
     function searchActive(){
         if (!flipable.flipped){
@@ -61,27 +70,36 @@ Page {
             return;
         }
         else {
-            documentHandler.setStyle(propertiesHighlightColor, stringHighlightColor,
-                                     qmlHighlightColor, javascriptHighlightColor,
-                                     commentHighlightColor, keywordsHighlightColor,
-                                     myeditor.font.pixelSize);
-            py.call('editFile.checkAutoSaved', [fullFilePath], function(result) {
-                if(!result){
-                    py.call('editFile.openings', [fullFilePath], function(result) {
-                        documentHandler.text = result.text;
-                        fileTitle=result.fileTitle
-                        py.call('editFile.changeFiletype', [fileType], function(result){});
-                        documentHandler.setDictionary(fileType);
-                    })
-                }else {
-                    pageStack.push(restoreD, {pathToFile:fullFilePath});
-                }
-            })
-            myeditor.forceActiveFocus();
-            busy.running=false;
-            if(hint<3){
-                headerHint.start()
-                hint = hint+1
+            if(untitled){
+                py.call('editFile.untitledNumber', [homePath], function(result) {
+                    fileTitle=result
+                });
+                myeditor.forceActiveFocus();
+                busy.running=false;
+                hintLoader.start()
+            }
+            else{
+                documentHandler.setStyle(propertiesHighlightColor, stringHighlightColor,
+                                         qmlHighlightColor, javascriptHighlightColor,
+                                         commentHighlightColor, keywordsHighlightColor,
+                                         myeditor.font.pixelSize);
+                py.call('editFile.checkAutoSaved', [fullFilePath], function(result) {
+                    if(!result){
+                        py.call('editFile.openings', [fullFilePath], function(result) {
+                            documentHandler.text = result.text;
+                            fileTitle=result.fileTitle
+                            if(!editorMode){
+                            py.call('editFile.changeFiletype', [fileType], function(result){});
+                            }
+                            documentHandler.setDictionary(fileType);
+                        })
+                    }else {
+                        pageStack.push(restoreD, {pathToFile:fullFilePath});
+                    }
+                })
+                myeditor.forceActiveFocus();
+                busy.running=false;
+                hintLoader.start()
             }
         }
         ready = true
@@ -107,6 +125,25 @@ Page {
                 }
             }
 
+            PullDownMenu {
+                enabled:!inSplitView
+                visible:enabled
+                MenuItem {
+                    enabled:editorMode
+                    visible:enabled
+                    text: qsTr("About & Help")
+                    onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
+                }
+                MenuItem {
+                    enabled:!inSplitView
+                    visible:enabled
+                    text:  qsTr("New file")
+                    onClicked: {
+                        pageStack.replace(Qt.resolvedUrl("EditorPage.qml"))
+                    }
+                }
+            }
+
             header: PageHeader {
                 title: qsTr("Open file")
             }
@@ -128,13 +165,14 @@ Page {
                         fullFilePath=path
                         py.call('editFile.checkAutoSaved', [fullFilePath], function(result) {
                             if(!result){
-                                console.log(fullFilePath+" "+ path)
                                 py.call('editFile.openings', [fullFilePath], function(result) {
                                     fileTitle=result.fileTitle
                                     documentHandler.text = result.text;
                                     fileType= /~$/.test(fileTitle) ? fileTitle.split(".").slice(-1)[0].slice(0, -1) :fileTitle.split(".").slice(-1)[0];
                                     previousPath=fullFilePath.replace(fileTitle, "")
+                                    if(!editorMode){
                                     py.call('editFile.changeFiletype', [fileType], function(result){});
+                                    }
                                     documentHandler.setDictionary(fileType);
                                 })
                             }else {
@@ -195,6 +233,18 @@ Page {
                             pageStack.navigateForward()
                         }
                     }
+                }
+                //wait that hint property is loaded
+                Timer {
+                    id:hintLoader
+                    interval:500
+                    onTriggered:{
+                        if(hint<3){
+                            headerHint.start()
+                            hint = hint+1
+                        }
+                    }
+
                 }
 
                 TouchInteractionHint{
@@ -362,13 +412,25 @@ Page {
                                             visible:!searchField.activeFocus && searchField.text.length<=0
                                         }
                                         IconButton {
-                                            icon.source: "image://ownIcons/icon-m-save"
+                                            icon.source: untitled?"image://ownIcons/icon-m-save-as":"image://ownIcons/icon-m-save"
                                             enabled: textChangedSave
                                             visible:!searchField.activeFocus && searchField.text.length<=0
                                             onClicked: {
-                                                py.call('editFile.savings', [fullFilePath,myeditor.text], function(result) {
-                                                    fileTitle=result
-                                                });
+                                                if(untitled){
+                                                    var d =pageStack.push(dialog, {path:"", noPath:true,noName:fileTitle, replacePage:pageStack.currentPage})
+                                                    d.accepted.connect(function(){
+                                                        fullFilePath=d.fPath
+                                                        documentHandler.setStyle(propertiesHighlightColor, stringHighlightColor,
+                                                                                 qmlHighlightColor, javascriptHighlightColor,
+                                                                                 commentHighlightColor, keywordsHighlightColor,
+                                                                                 myeditor.font.pixelSize);
+                                                    }
+                                                    )
+                                                }else {
+                                                    py.call('editFile.savings', [fullFilePath,myeditor.text], function(result) {
+                                                        fileTitle=result
+                                                    });
+                                                }
                                                 textChangedSave=false;
                                             }
                                         }
@@ -436,7 +498,8 @@ Page {
                     repeat: autoSave;
                     onTriggered: {
                         if(textChangedAutoSave){
-                            py.call('editFile.autosave', [fullFilePath,myeditor.text], function(result) {
+                            var tmpPath=fullFilePath?fullFilePath:StandardPaths.home+"/"+fileTitle
+                            py.call('editFile.autosave', [tmpPath,myeditor.text], function(result) {
                                 fileTitle=result
                                 previousPath=fullFilePath.replace(fileTitle.slice(0, -1), "")
                             });
@@ -541,10 +604,22 @@ Page {
                                 onActivated: {
                                     if(myeditor.focus){
                                         shortcutUsed=true
-                                        py.call('editFile.savings', [fullFilePath,myeditor.text], function(result) {
-                                            fileTitle=result
-                                            textChangedSave=false;
-                                        });
+                                        if(untitled){
+                                            var d =pageStack.push(dialog, {path:"", noPath:true,noName:fileTitle, replacePage:pageStack.currentPage})
+                                            d.accepted.connect(function(){
+                                                fullFilePath=d.fPath
+                                                documentHandler.setStyle(propertiesHighlightColor, stringHighlightColor,
+                                                                         qmlHighlightColor, javascriptHighlightColor,
+                                                                         commentHighlightColor, keywordsHighlightColor,
+                                                                         myeditor.font.pixelSize);
+                                            }
+                                            )
+                                        }else {
+                                            py.call('editFile.savings', [fullFilePath,myeditor.text], function(result) {
+                                                fileTitle=result
+                                            });
+                                        }
+                                        textChangedSave=false;
                                     }
                                 }
                             }
@@ -682,6 +757,8 @@ Page {
                 Component.onCompleted: {
                     addImportPath(Qt.resolvedUrl('./../python'));
                     importModule('editFile', function () {});
+                    importModule('openFile', function () {});
+                    importModule('addFile', function () {});
                 }
                 onError: {
                     showError(traceback)
@@ -698,5 +775,8 @@ Page {
 
     RestoreDialog{
         id:restoreD
+    }
+    AddFileDialog {
+        id: dialog
     }
 }

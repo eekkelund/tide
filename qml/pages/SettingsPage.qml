@@ -288,32 +288,19 @@ Page {
                 text: qsTr("Font")
             }
             ComboBox {
+                id: fontBox
                 label: qsTr("Font size:")
-                value: fontSize
+                value:appWindow.fontSize
+                //currentIndex: appWindow.fontSize
+
+                property variant values: [[qsTr("Tiny"), Theme.fontSizeTiny], [qsTr("ExtraSmall"), Theme.fontSizeExtraSmall], [qsTr("Small"), Theme.fontSizeSmall],[qsTr("Medium"), Theme.fontSizeMedium], [qsTr("Large"), Theme.fontSizeLarge], [qsTr("ExtraLarge"), Theme.fontSizeExtraLarge], [qsTr("Huge"), Theme.fontSizeHuge]]
 
                 menu: ContextMenu {
-                    MenuItem {
-                        text: qsTr("ExtraSmall")
-                        onClicked:{
-                            fontSize = Theme.fontSizeExtraSmall;
-                        }
-                    }
-                    MenuItem {
-                        text: qsTr("Small")
-                        onClicked:{
-                            fontSize = Theme.fontSizeSmall;
-                        }
-                    }
-                    MenuItem {
-                        text: qsTr("Medium")
-                        onClicked:{
-                            fontSize = Theme.fontSizeMedium;
-                        }
-                    }
-                    MenuItem {
-                        text:qsTr("Large")
-                        onClicked:{
-                            fontSize = Theme.fontSizeLarge;
+                    Repeater {
+                        model: fontBox.values.length
+                        MenuItem {
+                            text: fontBox.values[index][0]
+                            onClicked: appWindow.fontSize = fontBox.values[index][1]
                         }
                     }
                 }

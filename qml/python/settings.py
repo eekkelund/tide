@@ -27,8 +27,8 @@ editorDefaults={'darktheme': 'True',
 'tabsize': '4',
 }
 
-def setDataPath(path):
-    confPath = path+"/harbour-tide.conf"
+def setDataPath(path,app):
+    confPath = path+"/"+app+".conf"
     if not os.path.exists(path):
         os.makedirs(path)
     if not os.path.exists(confPath):

@@ -79,7 +79,7 @@ def build():
                     os.close(slave_fd) # subproces don't need it anymore
                     break
     rc = process.wait()
-    pyotherside.send('pid', "subprocess exited with status %d" % rc)
+    pyotherside.send('output', {'out':"subprocess exited with status %d" % rc})
     process.kill()
 
 def init():
@@ -92,7 +92,8 @@ def start_proc():
     return "started"
 
 def kill():
-    os.kill(process.pid, signal.SIGTERM)
+    if(process.pid):
+        os.kill(process.pid, signal.SIGTERM)
     process.wait()
     bgthread = None
     return "stopperd"

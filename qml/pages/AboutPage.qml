@@ -52,7 +52,7 @@ Page {
             Image {
                 id: logo
                 anchors.horizontalCenter: parent.horizontalCenter
-                source: "/usr/share/icons/hicolor/108x108/apps/harbour-tide.png"
+                source: "/usr/share/icons/hicolor/108x108/apps/"+app+".png"
             }
             Column {
                 anchors {
@@ -69,7 +69,7 @@ Page {
                     verticalAlignment: Text.AlignVCenter
                     font.bold: true
                     font.pixelSize: Theme.fontSizeLarge
-                    text: "tIDE"
+                    text:editorMode ? "tIDEditor" : "tIDE"
                 }
                 Label {
                     id: about
@@ -81,7 +81,7 @@ Page {
                     verticalAlignment: Text.AlignVCenter
                     font.pixelSize: Theme.fontSizeSmall
                     wrapMode: Text.WordWrap
-                    text: qsTr("transportable IDE for SailfishOS devices.")
+                    text:qsTr("transportable IDE for SailfishOS devices.") + (editorMode ? "\n"+ qsTr("The Editor") : "")
                 }
                 Label {
                     id: ver
@@ -102,6 +102,8 @@ Page {
                 content.sourceComponent: Column {
 
                     Label {
+                        enabled: !editorMode
+                        visible: enabled
                         wrapMode: Text.WordWrap
                         anchors {
                             left: parent.left
@@ -115,6 +117,8 @@ Page {
                         text: qsTr("Basic IDE features:")
                     }
                     Label {
+                        enabled: !editorMode
+                        visible: enabled
                         width: parent.width
                         wrapMode: Text.WordWrap
                         anchors {
@@ -152,9 +156,11 @@ Page {
                         }
                         font.pixelSize: Theme.fontSizeSmall
                         color: Theme.highlightColor
-                        text:qsTr("Line numbers (experimental)") + "\n"+ qsTr("Autosave") + "\n" +qsTr("Themes") + "\n" +qsTr("Font settings") + "\n" +qsTr("Indentation") + "\n"+ qsTr("Redo/Undo") + "\n"+ qsTr("Search") + "\n"+ qsTr("Launch from terminal (harbour-tide /path/to/file.txt)")+ "\n"+ qsTr("Change files on the fly")+ "\n"+ qsTr("Split view. And possibility to move separator")
+                        text:qsTr("Line numbers") + "\n"+ qsTr("Autosave") + "\n" +qsTr("Themes") + "\n" +qsTr("Font settings") + "\n" +qsTr("Indentation") + "\n"+ qsTr("Redo/Undo") + "\n"+ qsTr("Search") + "\n"+ qsTr("Launch from terminal (harbour-tide /path/to/file.txt)")+ "\n"+ qsTr("Change files on the fly")+ "\n"+ qsTr("Split view. And possibility to move separator")
                     }
                     Label {
+                        enabled: !editorMode
+                        visible: enabled
                         width: parent.width
                         wrapMode: Text.WordWrap
                         anchors {
@@ -169,6 +175,8 @@ Page {
                         text: qsTr("Root mode features:")
                     }
                     Label {
+                        enabled: !editorMode
+                        visible: enabled
                         width: parent.width
                         wrapMode: Text.WordWrap
                         anchors {
@@ -182,6 +190,8 @@ Page {
                         text:qsTr("Edit UI, app or system files. You name it!") + "\n"+ qsTr("Possibility to run applications in /usr/share")
                     }
                     Label {
+                        enabled: !editorMode
+                        visible: enabled
                         width: parent.width
                         wrapMode: Text.WordWrap
                         anchors {
@@ -196,6 +206,8 @@ Page {
                         text: qsTr("Keyboard:")
                     }
                     Label {
+                        enabled: !editorMode
+                        visible: enabled
                         width: parent.width
                         wrapMode: Text.WordWrap
                         anchors {
@@ -211,6 +223,8 @@ Page {
                 }
             }
             ExpandingSection {
+                enabled: !editorMode
+                visible: enabled
                 buttonHeight: Theme.itemSizeMedium
                 title: qsTr("Instructions")
                 content.sourceComponent: Column {
@@ -238,7 +252,7 @@ Page {
                             right: parent.right
                             rightMargin: Theme.horizontalPageMargin
                         }
-                        text: qsTr("Built RPM's are located at:") +" /home/nemo/rpmbuild/RPMS/*architecture*/"
+                        text: qsTr("Built RPM's are located at:") +" /home/" + "nemo/rpmbuild" + "/RPMS/*architecture*/"
                     }
                     Label {
                         textFormat: Text.StyledText
@@ -251,7 +265,7 @@ Page {
                             right: parent.right
                             rightMargin: Theme.horizontalPageMargin
                         }
-                        text: qsTr("Projects are located at:") +" /home/nemo/tIDE/Projects"
+                        text: qsTr("Projects are located at:") +" /home/" + "nemo/" + "tIDE/Projects"
                     }
                 }
             }

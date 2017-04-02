@@ -55,7 +55,7 @@ Page {
                 }
             }
             myeditor.onFocusChanged: {
-                if(myeditor.focus) py.call('editFile.changeFiletype', [fileType], function(result){});
+                if(myeditor.focus && !editorMode) py.call('editFile.changeFiletype', [fileType], function(result){});
             }
         }
 
@@ -116,7 +116,7 @@ Page {
                 }
             }
             myeditor.onFocusChanged: {
-                if(myeditor.focus) py.call('editFile.changeFiletype', [fileType], function(result){});
+                if(myeditor.focus && !editorMode) py.call('editFile.changeFiletype', [fileType], function(result){});
             }
         }
 

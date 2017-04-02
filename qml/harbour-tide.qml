@@ -41,6 +41,8 @@ ApplicationWindow
     //property string projectQmlPath:(projectPath +"/"+ projectName+"/qml/"+ projectName+".qml");
     //property bool split: false
     property bool rootMode: root
+    property string app: appName
+    property bool editorMode: app==="harbour-tide-editor"
 
     Notification{
         id:notification
@@ -120,11 +122,12 @@ ApplicationWindow
             addImportPath(Qt.resolvedUrl('./python'));
             importModule('settings', function () {
                 //getSettings
-                py.call('settings.setDataPath', [StandardPaths.data], function(){
+                py.call('settings.setDataPath', [StandardPaths.data, app], function(){
                     py.call('settings.get', ['darktheme'], function(result) {
                         if (result=="True") darkTheme=true
                         else darkTheme=false
                     });
+                    py.call('settings.get', ['hint'], function(result) {hint=result});
                     py.call('settings.get', ['fontsize'], function(result) {fontSize=result});
                     py.call('settings.get', ['fonttype'], function(result) {fontType=result});
                     py.call('settings.get', ['linenums'], function(result) {
@@ -148,15 +151,16 @@ ApplicationWindow
                         if (result=="True") trace=true
                         else trace=false
                     });
-                    py.call('settings.get', ['hint'], function(result) {hint=result});
                     py.call('settings.get', ['plugins'], function(result) {
                         if (result=="True") plugins=true
                         else plugins=false
                     });
                     py.call('settings.get', ['wrapmode'], function(result) {wrapMode=result})
-                    py.call('settings.getTab', ['tabsize'], function(result) {tabSize=result});
+                    //temporary
+                    if(!editorMode){
+                        py.call('settings.getTab', ['tabsize'], function(result) {tabSize=result});
+                    }
                 });
-
             });
         }
         onError: {

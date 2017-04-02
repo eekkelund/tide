@@ -23,6 +23,19 @@ def checkAutoSaved(filepath):
     else:
         return False
 
+def untitledNumber(folderpath):
+    for i in range(1,1000):
+        if not os.path.exists(folderpath+"/"+"untitled"+str(i)):
+            return "untitled"+str(i)
+        else:
+            return "Error, too many untitled files"
+
+def saveAs(fileName,ext,path,text):
+    file = open(path +"/"+ fileName + ext, 'a+', encoding = "utf-8")
+    file.write(text)
+    file.close()
+    return (path +"/"+ fileName + ext)
+
 def savings(filepath, text):
     if os.path.exists(filepath+"~"):
         os.remove(filepath+"~")

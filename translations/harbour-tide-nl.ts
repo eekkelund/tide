@@ -116,10 +116,6 @@
         <translation>Tekstvoorspelling (QML, JS &amp; Python)</translation>
     </message>
     <message>
-        <source>Line numbers (experimental)</source>
-        <translation>Regelnummers (experimenteel)</translation>
-    </message>
-    <message>
         <source>Autosave</source>
         <translation>Automatisch opslaan</translation>
     </message>
@@ -234,6 +230,14 @@
     <message>
         <source>Dutch</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The Editor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Line numbers</source>
+        <translation type="unfinished">Regelnummers</translation>
     </message>
 </context>
 <context>
@@ -363,6 +367,18 @@
     <message>
         <source>Settings</source>
         <translation type="unfinished">Instellingen</translation>
+    </message>
+    <message>
+        <source>untitled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>About &amp; Help</source>
+        <translation type="unfinished">Over &amp; hulp</translation>
     </message>
 </context>
 <context>
@@ -640,6 +656,18 @@
     <message>
         <source>spaces</source>
         <translation>spaties</translation>
+    </message>
+    <message>
+        <source>Tiny</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ExtraLarge</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Huge</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

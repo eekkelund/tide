@@ -43,6 +43,7 @@ def run_process():
         new_env['QML_IMPORT_TRACE'] = '1'#if user wants trace
     elif(plugins):
         new_env['QT_DEBUG_PLUGINS']='1'#if user wants plugins log
+    new_env['QT_LOGGING_TO_CONSOLE']='1'
     process = Popen(["qmlscene", projectqml], stdin=slave_fd, stdout=slave_fd, stderr=STDOUT, bufsize=0, close_fds=True, env=new_env )
     pyotherside.send('pid', process.pid)
     timeout = .1
@@ -89,7 +90,8 @@ def start_proc():
 
 
 def kill():
-    os.kill(process.pid, signal.SIGTERM)
+    if(process.pid):
+        os.kill(process.pid, signal.SIGTERM)
     process.wait()
     bgthread = None
     return "stopperd"
