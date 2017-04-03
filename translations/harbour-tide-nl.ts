@@ -217,27 +217,27 @@
     </message>
     <message>
         <source>Start as root script</source>
-        <translation type="unfinished"></translation>
+        <translation>Uitvoeren als root-script</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation type="unfinished"></translation>
+        <translation>Vertalingen</translation>
     </message>
     <message>
         <source>Swedish</source>
-        <translation type="unfinished"></translation>
+        <translation>Zweeds</translation>
     </message>
     <message>
         <source>Dutch</source>
-        <translation type="unfinished"></translation>
+        <translation>Nederlands</translation>
     </message>
     <message>
         <source>The Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>De verwerker</translation>
     </message>
     <message>
         <source>Line numbers</source>
-        <translation type="unfinished">Regelnummers</translation>
+        <translation>Regelnummers</translation>
     </message>
 </context>
 <context>
@@ -366,19 +366,19 @@
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Instellingen</translation>
+        <translation>Instellingen</translation>
     </message>
     <message>
         <source>untitled</source>
-        <translation type="unfinished"></translation>
+        <translation>naamloos</translation>
     </message>
     <message>
         <source>New file</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieuw bestand</translation>
     </message>
     <message>
         <source>About &amp; Help</source>
-        <translation type="unfinished">Over &amp; hulp</translation>
+        <translation>Over &amp; hulp</translation>
     </message>
 </context>
 <context>
@@ -659,15 +659,15 @@
     </message>
     <message>
         <source>Tiny</source>
-        <translation type="unfinished"></translation>
+        <translation>Klein</translation>
     </message>
     <message>
         <source>ExtraLarge</source>
-        <translation type="unfinished"></translation>
+        <translation>Extra groot</translation>
     </message>
     <message>
         <source>Huge</source>
-        <translation type="unfinished"></translation>
+        <translation>Enorm</translation>
     </message>
 </context>
 </TS>
