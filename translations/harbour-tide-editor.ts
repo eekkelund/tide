@@ -436,32 +436,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/EditorPage.qml" line="146"/>
+        <location filename="../qml/pages/EditorPage.qml" line="145"/>
         <source>About &amp; Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/EditorPage.qml" line="152"/>
+        <location filename="../qml/pages/EditorPage.qml" line="151"/>
         <source>New file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/EditorPage.qml" line="162"/>
+        <location filename="../qml/pages/EditorPage.qml" line="161"/>
         <source>Open file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/EditorPage.qml" line="250"/>
+        <location filename="../qml/pages/EditorPage.qml" line="249"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/EditorPage.qml" line="279"/>
+        <location filename="../qml/pages/EditorPage.qml" line="278"/>
         <source>Tap to show top bar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/EditorPage.qml" line="397"/>
+        <location filename="../qml/pages/EditorPage.qml" line="396"/>
         <source>Search</source>
         <translation type="unfinished"></translation>
     </message>

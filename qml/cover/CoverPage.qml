@@ -20,25 +20,29 @@ import Sailfish.Silica 1.0
 CoverBackground {
         Image {
                 source: "../icons/cover-tide.png"
-                anchors {
-                    verticalCenter: parent.verticalCenter
-
-                    bottom: parent.bottom
-                    bottomMargin: Theme.paddingMedium
-
-                    right: parent.right
-                    rightMargin: Theme.paddingMedium
-                }
-
+                asynchronous: true
+                width: parent.width
+                anchors.left: parent.left
+                anchors.top:parent.top
+                anchors.topMargin: Theme.paddingLarge
+                anchors.leftMargin: -Theme.paddingLarge
                 fillMode: Image.PreserveAspectFit
-                opacity: 0.20
+                opacity: 0.15
             }
-
+        Column {
+            anchors { top: parent.top
+                topMargin: Theme.paddingMedium
+                horizontalCenter: parent.horizontalCenter
+                leftMargin: Theme.paddingLarge
+                rightMargin: Theme.paddingLarge
+            }
+            height: label.height
         Label {
-            anchors.bottom: parent.bottom
-            anchors.margins: Theme.paddingMedium
-            anchors.horizontalCenter: parent.horizontalCenter
+                id:label
+            font.pixelSize: Theme.fontSizeLarge
+            font.family: Theme.fontFamilyHeading
             text: rootMode ? "root@tIDE" : editorMode ? "tIDEditor":"tIDE"
+        }
         }
 }
 
