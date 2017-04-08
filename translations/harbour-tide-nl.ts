@@ -366,7 +366,7 @@
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Instellingen</translation>
+        <translation>Instellingen</translation>
     </message>
     <message>
         <source>untitled</source>
@@ -378,7 +378,7 @@
     </message>
     <message>
         <source>About &amp; Help</source>
-        <translation type="unfinished">Over &amp; hulp</translation>
+        <translation>Over &amp; hulp</translation>
     </message>
 </context>
 <context>
@@ -436,6 +436,10 @@
     <message>
         <source>transportable IDE</source>
         <translation>draagbare IDE</translation>
+    </message>
+    <message>
+        <source>Just editor</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -667,6 +671,14 @@
     </message>
     <message>
         <source>Huge</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Multi-line comment highlighting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disabling improves file loading time</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -19,6 +19,16 @@ Page {
     signal formatClicked
     property var callback
 
+    function addNewFile(){
+        dialog.acceptDestinationAction = PageStackAction.Replace
+        dialog.accDest=Qt.resolvedUrl("EditorPage.qml")
+        dialog.acceptDestination=Qt.resolvedUrl("EditorPage.qml")
+        py.call('addFile.createFile', [dialog.fName,ext,dialog.path], function(fPath) {
+            dialog.acceptDestinationInstance.fileTitle=dialog.fName+ext
+            dialog.acceptDestinationInstance.fullFilePath=fPath
+        });
+    }
+
     backNavigation: !FileEngine.busy
 
     FileModel {
@@ -54,7 +64,9 @@ Page {
 
             MenuItem {
                 text:qsTr("Add file")
-                onClicked: pageStack.push(dialog, {path:path, accDest:"FileManagerPage.qml"})
+                onClicked:{
+                    pageStack.push(dialog, {callback:page.addNewFile, path:path, showFolderList:false,accDest:"FileManagerPage.qml"})
+                }
             }
         }
         model: fileModel

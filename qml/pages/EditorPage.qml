@@ -43,7 +43,6 @@ Page {
     property alias restoreD:restoreD
 
     onFullFilePathChanged:{
-        fileTitle=fullFilePath? singleFile:qsTr("untitled")
         untitled=fullFilePath?false:true
         previousPath=fullFilePath.replace(fileTitle, "")
         fileType= /~$/.test(fileTitle) ? fileTitle.split(".").slice(-1)[0].slice(0, -1) :fileTitle.split(".").slice(-1)[0]
@@ -59,8 +58,9 @@ Page {
     function pageStatusChange(page){
         if(!inSplitView && page.status === PageStatus.Active && pageStack.forwardNavigation) {
             pageStack.popAttached()
+
         }
-        if((page.status !== PageStatus.Active) || (myeditor.text.length > 0)){
+        if((page.status !== PageStatus.Active) /*|| (myeditor.text.length > 0)*/){
             if (autoSave&&textChangedAutoSave){
                 py.call('editFile.savings', [fullFilePath,myeditor.text], function(result) {
                     fileTitle=result
@@ -74,11 +74,9 @@ Page {
                 py.call('editFile.untitledNumber', [homePath], function(result) {
                     fileTitle=result
                 });
-                myeditor.forceActiveFocus();
-                busy.running=false;
-                hintLoader.start()
             }
             else{
+                documentHandler.setMultiLineHighlight(multiLineHighLight)
                 documentHandler.setStyle(propertiesHighlightColor, stringHighlightColor,
                                          qmlHighlightColor, javascriptHighlightColor,
                                          commentHighlightColor, keywordsHighlightColor,
@@ -89,24 +87,35 @@ Page {
                             documentHandler.text = result.text;
                             fileTitle=result.fileTitle
                             if(!editorMode){
-                            py.call('editFile.changeFiletype', [fileType], function(result){});
+                                py.call('editFile.changeFiletype', [fileType], function(result){});
                             }
                             documentHandler.setDictionary(fileType);
                         })
                     }else {
-                        pageStack.push(restoreD, {pathToFile:fullFilePath});
+                        if(fileTitle.slice(-1)!="~") pageStack.push(restoreD, {pathToFile:fullFilePath});
                     }
                 })
-                myeditor.forceActiveFocus();
-                busy.running=false;
-                hintLoader.start()
             }
+            previousPath=fullFilePath.replace(fileTitle, "")
+            myeditor.forceActiveFocus();
+            busy.running=false;
+            hintLoader.start()
         }
         ready = true
     }
 
     Drawer {
         id: drawer
+
+        function createNewFile(){
+            py.call('addFile.createFile', [dialog.fName,ext,dialog.path], function(fPath) {
+                fileTitle=dialog.fName+ext
+                fullFilePath=fPath
+                dialog.acceptDestinationAction = PageStackAction.Pop
+                dialog.acceptDestination=pageStack.currentPage
+                pageStatusChange(page)
+            });
+        }
 
         anchors.fill: parent
         dock: Dock.Left
@@ -115,8 +124,10 @@ Page {
             anchors.fill: parent
             model: ListModel{
                 id: lmodel
+                property string folderPathForNewFile
                 function loadNew(path) {
                     clear()
+                    folderPathForNewFile=path
                     py.call('openFile.allfiles', [path], function(result) {
                         for (var i=0; i<result.length; i++) {
                             lmodel.append(result[i]);
@@ -139,7 +150,9 @@ Page {
                     visible:enabled
                     text:  qsTr("New file")
                     onClicked: {
-                        pageStack.replace(Qt.resolvedUrl("EditorPage.qml"))
+                        drawer.open = false
+                        var d1 = null
+                        d1 =pageStack.push(dialog, {callback:drawer.createNewFile,path:lmodel.folderPathForNewFile, showFolderList:true/*, noPath:false/*, replacePage:pageStack.currentPage*/})
                     }
                 }
             }
@@ -171,9 +184,15 @@ Page {
                                     fileType= /~$/.test(fileTitle) ? fileTitle.split(".").slice(-1)[0].slice(0, -1) :fileTitle.split(".").slice(-1)[0];
                                     previousPath=fullFilePath.replace(fileTitle, "")
                                     if(!editorMode){
-                                    py.call('editFile.changeFiletype', [fileType], function(result){});
+                                        py.call('editFile.changeFiletype', [fileType], function(result){});
                                     }
+                                    documentHandler.setMultiLineHighlight(multiLineHighLight)
+                                    documentHandler.setStyle(propertiesHighlightColor, stringHighlightColor,
+                                                             qmlHighlightColor, javascriptHighlightColor,
+                                                             commentHighlightColor, keywordsHighlightColor,
+                                                             myeditor.font.pixelSize);
                                     documentHandler.setDictionary(fileType);
+
                                 })
                             }else {
                                 pageStack.push(restoreD, {pathToFile:path});
@@ -286,6 +305,17 @@ Page {
 
                             property bool flipped: false
 
+                            function saveAsNewFile(){
+                                py.call('editFile.saveAs', [dialog.fName,ext,dialog.path,myeditor.text], function(fPath) {
+                                    fileTitle=dialog.fName+ext
+                                    dialog.acceptDestinationAction = PageStackAction.Pop
+                                    dialog.acceptDestination=pageStack.currentPage
+                                    fullFilePath=fPath
+                                    textChangedSave=false;
+                                    pageStatusChange(page)
+                                });
+                            }
+
                             function search(text, position, direction) {
                                 //var reg = new RegExp(text, "ig")
                                 text= text.toLowerCase()
@@ -357,12 +387,12 @@ Page {
                                     Flow {
                                         id:menu
                                         height: pgHead.height
-                                        spacing: Theme.paddingSmall
+                                        spacing: Screen.sizeCategory === Screen.Large? Theme.paddingLarge : Theme.paddingSmall
                                         anchors.horizontalCenter: parent.horizontalCenter
 
                                         SearchField{
                                             id:searchField
-                                            width: (activeFocus || text.length>0) ? pgHead.width -previous.width*2: implicitWidth
+                                            width: (activeFocus || text.length>0) ? pgHead.width -previous.width*2: implicitWidth*1.5
                                             placeholderText: qsTr("Search")
                                             EnterKey.iconSource: "image://theme/icon-m-enter-next"
                                             EnterKey.onClicked:{
@@ -417,15 +447,7 @@ Page {
                                             visible:!searchField.activeFocus && searchField.text.length<=0
                                             onClicked: {
                                                 if(untitled){
-                                                    var d =pageStack.push(dialog, {path:"", noPath:true,noName:fileTitle, replacePage:pageStack.currentPage})
-                                                    d.accepted.connect(function(){
-                                                        fullFilePath=d.fPath
-                                                        documentHandler.setStyle(propertiesHighlightColor, stringHighlightColor,
-                                                                                 qmlHighlightColor, javascriptHighlightColor,
-                                                                                 commentHighlightColor, keywordsHighlightColor,
-                                                                                 myeditor.font.pixelSize);
-                                                    }
-                                                    )
+                                                    pageStack.push(dialog, {callback:flipable.saveAsNewFile,path:previousPath, showFolderList:true, noName:fileTitle/*, replacePage:pageStack.currentPage*/})
                                                 }else {
                                                     py.call('editFile.savings', [fullFilePath,myeditor.text], function(result) {
                                                         fileTitle=result
@@ -498,10 +520,10 @@ Page {
                     repeat: autoSave;
                     onTriggered: {
                         if(textChangedAutoSave){
-                            var tmpPath=fullFilePath?fullFilePath:StandardPaths.home+"/"+fileTitle
+                            var tmpPath=fullFilePath?fullFilePath:StandardPaths.home+"/"+fileTitle.replace(/~$/, '');
                             py.call('editFile.autosave', [tmpPath,myeditor.text], function(result) {
                                 fileTitle=result
-                                previousPath=fullFilePath.replace(fileTitle.slice(0, -1), "")
+                                previousPath=tmpPath.replace(fileTitle.slice(0, -1), "")
                             });
                             textChangedAutoSave=false;
                         }
@@ -605,15 +627,7 @@ Page {
                                     if(myeditor.focus){
                                         shortcutUsed=true
                                         if(untitled){
-                                            var d =pageStack.push(dialog, {path:"", noPath:true,noName:fileTitle, replacePage:pageStack.currentPage})
-                                            d.accepted.connect(function(){
-                                                fullFilePath=d.fPath
-                                                documentHandler.setStyle(propertiesHighlightColor, stringHighlightColor,
-                                                                         qmlHighlightColor, javascriptHighlightColor,
-                                                                         commentHighlightColor, keywordsHighlightColor,
-                                                                         myeditor.font.pixelSize);
-                                            }
-                                            )
+                                            pageStack.push(dialog, {callback:flipable.saveAsNewFile,path:previousPath, showFolderList:true, noName:fileTitle/*, replacePage:pageStack.currentPage*/})
                                         }else {
                                             py.call('editFile.savings', [fullFilePath,myeditor.text], function(result) {
                                                 fileTitle=result

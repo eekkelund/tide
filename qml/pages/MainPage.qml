@@ -81,6 +81,17 @@ Page{
             text: qsTr("Edit single file")
             onClicked: pageStack.push(Qt.resolvedUrl("FileManagerPage.qml"),{callback:openEditor})
         }
+        Button{
+            id:editor
+            preferredWidth: Theme.buttonWidthLarge
+            anchors {
+                horizontalCenter: parent.horizontalCenter
+                top: file.bottom
+                topMargin: Theme.paddingLarge
+            }
+            text: qsTr("Just editor")
+            onClicked: pageStack.push(Qt.resolvedUrl("EditorPage.qml"))
+        }
     }
 
     onStatusChanged:{

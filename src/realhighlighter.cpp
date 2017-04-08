@@ -1,8 +1,8 @@
 /*****************************************************************************
  *
- * Created: 2016 by Eetu Kahelin / eekkelund
+ * Created: 2016-2017 by Eetu Kahelin / eekkelund
  *
- * Copyright 2016 Eetu Kahelin. All rights reserved.
+ * Copyright 2016-2017 Eetu Kahelin. All rights reserved.
  *
  * This file may be distributed under the terms of GNU Public License version
  * 3 (GPL v3) as defined by the Free Software Foundation (FSF). A copy of the
@@ -167,6 +167,12 @@ void RealHighlighter::ruleUpdate()
     rule.format = quotationFormat;
     highlightingRules.append(rule);
 
+    quotationFormat.setForeground(QColor(m_secondaryColor));
+    quotationFormat.setFontItalic(true);
+    rule.pattern = QRegExp("\'([^\']*)\'");
+    rule.format = quotationFormat;
+    highlightingRules.append(rule);
+
     numberFormat.setForeground(QColor(m_primaryColor));
     rule.pattern = QRegExp("[0-9]");
     rule.format = numberFormat;
@@ -186,7 +192,7 @@ void RealHighlighter::highlightBlock(const QString &text)
         }
     }
 
-    if((m_dictionary=="js" || (m_dictionary=="qml"))){
+    if((m_dictionary=="js" || (m_dictionary=="qml")) && m_multiLineHLEnabled){
         QTextCharFormat tmpFormat;
         enum {
             Start = 0,
@@ -268,5 +274,12 @@ void RealHighlighter::setDictionary(QString dictionary)
     m_dictionary = dictionary;
     this->ruleUpdate();
     this->rehighlight();
+}
+
+void RealHighlighter::setMultiLineHighlight(bool multiLineHLEnabled)
+{
+    if(m_multiLineHLEnabled) {
+        m_multiLineHLEnabled = multiLineHLEnabled;
+    }
 }
 

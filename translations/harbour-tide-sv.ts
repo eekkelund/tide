@@ -237,7 +237,7 @@
     </message>
     <message>
         <source>Line numbers</source>
-        <translation type="unfinished">Radnummer</translation>
+        <translation>Radnummer</translation>
     </message>
 </context>
 <context>
@@ -378,7 +378,7 @@
     </message>
     <message>
         <source>About &amp; Help</source>
-        <translation type="unfinished">Om &amp; Hjälp</translation>
+        <translation>Om &amp; Hjälp</translation>
     </message>
 </context>
 <context>
@@ -436,6 +436,10 @@
     <message>
         <source>transportable IDE</source>
         <translation>transportabel IDE</translation>
+    </message>
+    <message>
+        <source>Just editor</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -667,6 +671,14 @@
     </message>
     <message>
         <source>Huge</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Multi-line comment highlighting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disabling improves file loading time</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

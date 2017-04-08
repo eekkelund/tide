@@ -26,7 +26,8 @@ def checkAutoSaved(filepath):
 def untitledNumber(folderpath):
     for i in range(1,1000):
         if not os.path.exists(folderpath+"/"+"untitled"+str(i)):
-            return "untitled"+str(i)
+            if not os.path.exists(folderpath+"/"+"untitled"+str(i)+"~"):
+                return "untitled"+str(i)
         else:
             return "Error, too many untitled files"
 

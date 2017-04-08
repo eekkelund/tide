@@ -25,7 +25,6 @@ Page {
 
     Item {
         id: column1
-        //width: splitPage.width / 2
         anchors.left: parent.left
         anchors.right:line.left
         height: splitPage.height
@@ -38,6 +37,10 @@ Page {
             drawer.parent: column1
             restoreD.onDone:{
                 splitPage.fullFilePath = fullFilePath
+                editor=1
+            }
+            onFullFilePathChanged:{
+                splitPage.fullFilePath = editor1Page.fullFilePath
                 editor=1
             }
             myeditor.onTextChanged: {
@@ -66,7 +69,6 @@ Page {
         width: Theme.paddingSmall
         color: Theme.highlightDimmerColor
         x: parent.width/2
-        //anchors.horizontalCenter: parent.horizontalCenter
         Drag.active: mouseArea.drag.active
         property point beginDrag
 
@@ -98,6 +100,10 @@ Page {
             drawer.parent: column2
             restoreD.onDone:{
                 splitPage.fullFilePath = fullFilePath
+                editor=2
+            }
+            onFullFilePathChanged:{
+                splitPage.fullFilePath = editor2Page.fullFilePath
                 editor=2
             }
 

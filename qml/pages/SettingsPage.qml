@@ -246,7 +246,14 @@ Page {
                     text: colorBox.currentItem.text
                 }
             }
-
+            TextSwitch {
+                text: qsTr("Multi-line comment highlighting")
+                description: qsTr("Disabling improves file loading time")
+                checked: multiLineHighLight
+                onCheckedChanged: {
+                    multiLineHighLight = checked
+                }
+            }
 
 
             SectionHeader {
@@ -272,6 +279,8 @@ Page {
                 }
             }
             Slider {
+                visible: !editorMode
+                enabled: visible
                 label: qsTr("Tab size")
                 width: parent.width
                 value: tabSize
@@ -373,9 +382,13 @@ Page {
                 }
             }
             SectionHeader {
+                visible: !editorMode
+                enabled: visible
                 text: qsTr("Debugging")
             }
             TextSwitch {
+                visible: !editorMode
+                enabled: visible
                 text: qsTr("QML TRACE")
                 checked: trace
                 onCheckedChanged: {
@@ -383,6 +396,8 @@ Page {
                 }
             }
             TextSwitch {
+                visible: !editorMode
+                enabled: visible
                 text: qsTr("DEBUG PLUGINS")
                 checked: plugins
                 onCheckedChanged: {

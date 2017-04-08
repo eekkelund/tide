@@ -1,8 +1,8 @@
 /*****************************************************************************
  *
- * Created: 2016 by Eetu Kahelin / eekkelund
+ * Created: 2016-2017 by Eetu Kahelin / eekkelund
  *
- * Copyright 2016 Eetu Kahelin. All rights reserved.
+ * Copyright 2016-2017 Eetu Kahelin. All rights reserved.
  *
  * This file may be distributed under the terms of GNU Public License version
  * 3 (GPL v3) as defined by the Free Software Foundation (FSF). A copy of the
@@ -34,6 +34,7 @@ public:
 
     void setStyle(QString primaryColor, QString secondaryColor, QString highlightColor, QString secondaryHighlightColor, QString highlightBackgroundColor, QString highlightDimmerColor, qreal m_baseFontPointSize);
     void setDictionary(QString dictionary);
+    void setMultiLineHighlight(bool multiLineHLEnabled);
 
 protected:
     void highlightBlock(const QString &text) Q_DECL_OVERRIDE;
@@ -68,10 +69,11 @@ private:
     QTextCharFormat propertiesFormat;
     QTextCharFormat pythonFormat;
     QTextCharFormat singleLineCommentFormat;
-     QTextCharFormat multiLineCommentFormat;
-     QTextCharFormat quotationFormat;
-     QTextCharFormat functionFormat;
-     QTextCharFormat numberFormat;
+    QTextCharFormat multiLineCommentFormat;
+    QTextCharFormat quotationFormat;
+    QTextCharFormat functionFormat;
+    QTextCharFormat numberFormat;
+    bool m_multiLineHLEnabled;
     void loadDict(QString path, QStringList &patterns);
 };
 

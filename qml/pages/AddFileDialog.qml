@@ -20,19 +20,21 @@ import io.thp.pyotherside 1.3
 
 Dialog {
     on_ActivatedChanged: {
-        if(noPath && _activated){
-            lmodel.loadNew(homePath)
+        if(_activated && showFolderList){
+            listmodel.loadNew(path)
         }
+        acceptDestination=Qt.resolvedUrl(accDest)
+        acceptDestinationAction= PageStackAction.Replace
     }
 
     property string path
-    property string noName: ""
+    property string noName
     property bool noPath: false
     property string accDest
     property var replacePage
-    property string fPath
-    acceptDestination:Qt.resolvedUrl(accDest)
-    acceptDestinationAction: PageStackAction.Replace
+    property bool showFolderList
+    property string fName
+    property var callback
     DialogHeader {
         id:dHdr
         acceptText: qsTr("Add")
@@ -112,19 +114,23 @@ Dialog {
         }
     }
     SilicaListView {
+        id:listView
         anchors.top: fileAddList.bottom
         width: page.width
         height: page.height-fileAddList.height-Theme.itemSizeLarge
-        visible:noPath
+        visible:showFolderList
         enabled:visible
         clip:true
+        property var files: []
         model: ListModel{
-            id: lmodel
+            id: listmodel
             function loadNew(path2) {
                 clear()
+                listView.files = []
                 py.call('openFile.allfiles', [path2], function(result) {
                     for (var i=0; i<result.length; i++) {
-                        lmodel.append(result[i]);
+                        listView.files.push(result[i].files)
+                        listmodel.append(result[i]);
                     }
                 });
             }
@@ -140,7 +146,7 @@ Dialog {
             }
             onClicked: {
                 if (file.text.slice(-1) =="/") {
-                    lmodel.loadNew(path2);
+                    listmodel.loadNew(path2);
                     path=path2
                 }else {}
 
@@ -158,39 +164,16 @@ Dialog {
     }
 
 
-    canAccept: fileName.text !== ""&& ext !==""&& ext !=="." ? true :false
+    canAccept: fileName.text !== ""&& ext !==""&& ext !=="." && listView.files.indexOf(fileName.text + ext) == -1 ? true :false
     onAccepted: {
         if (fileName.text !== ""&& ext !==""&& ext !==".") {
-            var fName = fileName.text
+            fName = fileName.text
             if (!path){
                 path=homePath
             }
-            fPath = path +"/"+ fName + ext
-            if(replacePage){
-                py.call('editFile.saveAs', [fName,ext,path,myeditor.text], function(fPath) {
-                    fPath=path
-                    textChangedSave=false;
-                });
-                filePath = fPath
-                acceptDestinationAction = PageStackAction.Pop
-                acceptDestination=replacePage
-                //acceptDestinationInstance.fullFilePath = filePath
-                 //acceptDestinationReplaceTarget=replacePage
-                acceptDestinationProperties = {fullFilePath: fPath, fileTitle:(fName+ext)}
-            }else{
-                py.call('addFile.createFile', [fName,ext,path], function(fPath) {
-                    fPath=path
-                });
-                filePath = fPath
-                if(accDest=="ProjectHome.qml"){
-                    lmodel.loadNew(path);
-                }
-                accDest=Qt.resolvedUrl("EditorPage.qml")
-                dialog.acceptDestination=Qt.resolvedUrl("EditorPage.qml")
-                acceptDestinationInstance.fullFilePath = fPath
-            }
-
-            singleFile=(fName+ext)
+            var titleOfFile=fName + ext
+            callback()
+            singleFile=titleOfFile
             fileName.focus= false;
             fileName.text = ""
             fType.text =""

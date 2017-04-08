@@ -92,7 +92,6 @@ Page {
                     if (success&&text.out.length>2) {
                         rpmPath=text.out.split(": ")[1].trim()
                         rpmPath = "file://"+rpmPath
-                        console.log(rpmPath)
                         console.log(text.out)
                         success = false
                     }

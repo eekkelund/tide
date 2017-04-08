@@ -111,6 +111,8 @@ ApplicationWindow
         //temporary
         py.call('settings.setTab', ['tabsize',tabSize], function(result) {});
     }
+    property bool multiLineHighLight //:
+    onMultiLineHighLightChanged: setSetting('multilinehl',multiLineHighLight)
 
     function setSetting(key, value){
         py.call('settings.set', [key, value], function(result) {});
@@ -156,6 +158,10 @@ ApplicationWindow
                         else plugins=false
                     });
                     py.call('settings.get', ['wrapmode'], function(result) {wrapMode=result})
+                    py.call('settings.get', ['multilinehl'], function(result) {
+                        if (result=="True") multiLineHighLight=true
+                        else multiLineHighLight=false
+                    });
                     //temporary
                     if(!editorMode){
                         py.call('settings.getTab', ['tabsize'], function(result) {tabSize=result});

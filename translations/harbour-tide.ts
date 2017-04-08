@@ -437,6 +437,10 @@
         <source>transportable IDE</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Just editor</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ProjectHome</name>
@@ -667,6 +671,14 @@
     </message>
     <message>
         <source>Huge</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Multi-line comment highlighting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disabling improves file loading time</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

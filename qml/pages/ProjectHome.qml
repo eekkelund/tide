@@ -23,6 +23,17 @@ Page {
     property string projectHomePath: projectPath+ "/"+projectName
     property string ext: ""
 
+    function addNewFile(){
+        lmodel.loadNew(dialog.path)
+        dialog.acceptDestinationAction = PageStackAction.Replace
+        dialog.accDest=Qt.resolvedUrl("EditorPage.qml")
+        dialog.acceptDestination=Qt.resolvedUrl("EditorPage.qml")
+        py.call('addFile.createFile', [dialog.fName,ext,dialog.path], function(fPath) {
+            dialog.acceptDestinationInstance.fileTitle=dialog.fName+ext
+            dialog.acceptDestinationInstance.fullFilePath=fPath
+        });
+    }
+
     signal projectDeleted()
 
     RemorsePopup { id: remorsePopup }
@@ -69,7 +80,9 @@ Page {
             MenuItem {
                 text: qsTr("Add file")
                 onClicked: {
-                    pageStack.push(dialog, {path:projectHomePath, accDest:"ProjectHome.qml"})
+                    pageStack.push(dialog, {callback:page.addNewFile, path:projectHomePath, showFolderList:false,accDest:"ProjectHome.qml"})
+
+
                 }
             }
         }
@@ -146,11 +159,6 @@ Page {
             importModule('buildRPM', function() {});
             importModule('deleteProject', function() {})
             importModule('openFile', function () {
-                py.call('openFile.files', [projectPath+ "/"+projectName], function(result2) {
-                    for (var i=0; i<result2.length; i++) {
-                        lmodel.append(result2[i]);
-                    }
-                });
             });
         }
         onError: {
@@ -160,6 +168,11 @@ Page {
     }
     AddFileDialog {
         id: dialog
+    }
+    onStatusChanged: {
+        if(status==PageStatus.Activating){
+            lmodel.loadNew(projectPath+ "/"+projectName);
+        }
     }
 
 }
