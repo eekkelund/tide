@@ -431,38 +431,28 @@
 <context>
     <name>EditorPage</name>
     <message>
-        <location filename="../qml/pages/EditorPage.qml" line="31"/>
-        <source>untitled</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/EditorPage.qml" line="145"/>
+        <location filename="../qml/pages/EditorPage.qml" line="153"/>
         <source>About &amp; Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/EditorPage.qml" line="151"/>
+        <location filename="../qml/pages/EditorPage.qml" line="159"/>
         <source>New file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/EditorPage.qml" line="161"/>
+        <location filename="../qml/pages/EditorPage.qml" line="168"/>
         <source>Open file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/EditorPage.qml" line="249"/>
+        <location filename="../qml/pages/EditorPage.qml" line="262"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/EditorPage.qml" line="278"/>
+        <location filename="../qml/pages/EditorPage.qml" line="290"/>
         <source>Tap to show top bar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/EditorPage.qml" line="396"/>
-        <source>Search</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -835,6 +825,14 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="401"/>
         <source>DEBUG PLUGINS</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TopBar</name>
+    <message>
+        <location filename="../qml/components/TopBar.qml" line="95"/>
+        <source>Search</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

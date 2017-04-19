@@ -133,8 +133,8 @@ Page {
                 }
                 else {
                     filePath=path;
-                    singleFile =file.text
-                    pageStack.push(Qt.resolvedUrl("EditorPage.qml"),{fullFilePath: path})
+                    //singleFile =file.text
+                    pageStack.push(Qt.resolvedUrl("EditorPage.qml"),{fullFilePath: path, fileTitle: file.text})
                 }
 
             }

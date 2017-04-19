@@ -35,7 +35,7 @@ Dialog{
             py.call('editFile.openAutoSaved', [pathToFile], function(result) {
                 documentHandler.text = result.text;
                 fileTitle=result.fileTitle
-                previousPath=pathToFile.replace(fileTitle.slice(0, -1), "")
+                previousPath=pathToFile.substring(0,pathToFile.lastIndexOf('/'))
             })
             fullFilePath=pathToFile
         }else if(result == DialogResult.Rejected){

@@ -34,7 +34,8 @@ DISTFILES += \
     qml/python/settings.py \
     qml/pages/AboutPage.qml \
     qml/pages/SplitPage.qml \
-    qml/pages/EditorPage.qml
+    qml/pages/EditorPage.qml \
+    qml/components/TopBar.qml
 
 HEADERS += \
     src/realhighlighter.h \

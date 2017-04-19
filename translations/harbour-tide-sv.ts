@@ -357,20 +357,12 @@
         <translation>Öppna fil</translation>
     </message>
     <message>
-        <source>Search</source>
-        <translation>Sök</translation>
-    </message>
-    <message>
         <source>Tap to show top bar</source>
         <translation>Tryck för att visa toppfält</translation>
     </message>
     <message>
         <source>Settings</source>
         <translation>Inställningar</translation>
-    </message>
-    <message>
-        <source>untitled</source>
-        <translation>namnlös</translation>
     </message>
     <message>
         <source>New file</source>
@@ -680,6 +672,13 @@
     <message>
         <source>Disabling improves file loading time</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TopBar</name>
+    <message>
+        <source>Search</source>
+        <translation type="unfinished">Sök</translation>
     </message>
 </context>
 </TS>

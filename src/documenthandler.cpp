@@ -175,6 +175,13 @@ void DocumentHandler::setMultiLineHighlight(bool mLineEnabled)
     }
 }
 
+void DocumentHandler::searchHighlight(QString str)
+{
+    if (m_realhighlighter) {
+        m_realhighlighter->searchHighlight(str);
+    }
+}
+
 QTextCursor DocumentHandler::textCursor() const
 {
     QTextCursor cursor = QTextCursor(m_doc);

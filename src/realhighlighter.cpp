@@ -167,12 +167,6 @@ void RealHighlighter::ruleUpdate()
     rule.format = quotationFormat;
     highlightingRules.append(rule);
 
-    quotationFormat.setForeground(QColor(m_secondaryColor));
-    quotationFormat.setFontItalic(true);
-    rule.pattern = QRegExp("\'([^\']*)\'");
-    rule.format = quotationFormat;
-    highlightingRules.append(rule);
-
     numberFormat.setForeground(QColor(m_primaryColor));
     rule.pattern = QRegExp("[0-9]");
     rule.format = numberFormat;
@@ -281,5 +275,17 @@ void RealHighlighter::setMultiLineHighlight(bool multiLineHLEnabled)
     if(m_multiLineHLEnabled) {
         m_multiLineHLEnabled = multiLineHLEnabled;
     }
+}
+
+void RealHighlighter::searchHighlight(QString str)
+{
+     HighlightingRule rule;
+     searchFormat.setBackground(QColor(m_highlightBackgroundColor));
+     searchFormat.setFontItalic(true);
+     searchFormat.setFontUnderline(true);
+     rule.pattern = QRegExp(str,Qt::CaseInsensitive);
+     rule.format = searchFormat;
+     highlightingRules.append(rule);
+     this->rehighlight();
 }
 

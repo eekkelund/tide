@@ -37,7 +37,7 @@ ApplicationWindow
     property string buildPath: homePath+"/rpmbuild"
     property string projectName
     property string filePath
-    property string singleFile
+   // property string singleFile
     //property string projectQmlPath:(projectPath +"/"+ projectName+"/qml/"+ projectName+".qml");
     //property bool split: false
     property bool rootMode: root

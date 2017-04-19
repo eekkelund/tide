@@ -7,7 +7,7 @@ Name:       harbour-tide-editor
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    transportable IDE - editor
-Version:    0.2.6
+Version:    0.2.7
 Release:    1
 Group:      Qt/Qt
 License:    GPLv3
@@ -53,6 +53,7 @@ desktop-file-install --delete-original       \
 %exclude %{_datadir}/%{name}/qml/pages/FileManagerPage.qml
 %exclude %{_datadir}/%{name}/qml/pages/BuildOutput.qml
 %exclude %{_datadir}/%{name}/qml/template-app
+%exclude %{_datadir}/%{name}/qml/templates
 %exclude %{_datadir}/%{name}/qml/pages/CreateProject.qml
 %exclude %{_datadir}/%{name}/qml/pages/ProjectHome.qml
 %exclude %{_datadir}/%{name}/qml/pages/AppOutput.qml

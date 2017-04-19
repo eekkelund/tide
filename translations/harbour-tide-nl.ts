@@ -357,20 +357,12 @@
         <translation>Bestand openen</translation>
     </message>
     <message>
-        <source>Search</source>
-        <translation>Zoeken</translation>
-    </message>
-    <message>
         <source>Tap to show top bar</source>
         <translation>Tik om de bovenste balk weer te geven</translation>
     </message>
     <message>
         <source>Settings</source>
         <translation>Instellingen</translation>
-    </message>
-    <message>
-        <source>untitled</source>
-        <translation>naamloos</translation>
     </message>
     <message>
         <source>New file</source>
@@ -680,6 +672,13 @@
     <message>
         <source>Disabling improves file loading time</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TopBar</name>
+    <message>
+        <source>Search</source>
+        <translation type="unfinished">Zoeken</translation>
     </message>
 </context>
 </TS>

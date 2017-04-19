@@ -173,7 +173,7 @@ Dialog {
             }
             var titleOfFile=fName + ext
             callback()
-            singleFile=titleOfFile
+         //   singleFile=titleOfFile
             fileName.focus= false;
             fileName.text = ""
             fType.text =""
