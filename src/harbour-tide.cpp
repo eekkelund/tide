@@ -36,8 +36,8 @@ int main(int argc, char *argv[])
     bool root;
     if (getuid()) root = false;
     else root = true;
-    qmlRegisterType<DocumentHandler>("harbour.tide.documenthandler", 1, 0, "DocumentHandler");
-    qmlRegisterType<KeyboardShortcut>("harbour.tide.keyboardshortcut", 1, 0, "KeyboardShortcut");
+    qmlRegisterType<DocumentHandler>("harbour.tide.editor.documenthandler", 1, 0, "DocumentHandler");
+    qmlRegisterType<KeyboardShortcut>("harbour.tide.editor.keyboardshortcut", 1, 0, "KeyboardShortcut");
     QGuiApplication *app = SailfishApp::application(argc, argv);
     app->setApplicationVersion(QString(APP_VERSION));
     QString appName = QFileInfo(QGuiApplication::applicationFilePath()).fileName();

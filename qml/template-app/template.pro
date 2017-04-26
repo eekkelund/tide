@@ -1,6 +1,6 @@
 TARGET = template
 
-CONFIG += sailfishapp
+CONFIG += sailfishapp_qml
 
 OTHER_FILES += qml/template.qml \
     qml/cover/CoverPage.qml \

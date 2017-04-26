@@ -17,8 +17,8 @@
 import QtQuick 2.2
 import Sailfish.Silica 1.0
 import io.thp.pyotherside 1.3
-import harbour.tide.documenthandler 1.0
-import harbour.tide.keyboardshortcut 1.0
+import harbour.tide.editor.documenthandler 1.0
+import harbour.tide.editor.keyboardshortcut 1.0
 import "../components"
 
 Page {
