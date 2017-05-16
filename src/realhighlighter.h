@@ -22,6 +22,7 @@
 #include <QTextCharFormat>
 #include <QSyntaxHighlighter>
 #include <QHash>
+#include <QRegularExpression>
 
 class QTextDocument;
 
@@ -46,14 +47,14 @@ private:
     class HighlightingRule
     {
     public:
-        QRegExp pattern;
+        QRegularExpression pattern;
         QTextCharFormat format;
     };
 
     QVector<HighlightingRule> highlightingRules;
 
-    QRegExp commentStartExpression;
-    QRegExp commentEndExpression;
+    QRegularExpression commentStartExpression;
+    QRegularExpression commentEndExpression;
 
     QString m_primaryColor;
     QString m_secondaryColor;
