@@ -59,17 +59,6 @@ Page {
                     goToProjects()
                 }
             }
-            /*MenuItem {
-                enabled:rootMode
-                visible:enabled
-                text:  projectPath=="/usr/share/" ? qsTr("Go to own projects"): qsTr("Go to /usr/share/")
-                onClicked: {
-                    if(projectPath=="/usr/share/") {
-                        projectPath= homePath+"/Projects"
-                    }else projectPath="/usr/share/"
-                    goToProjects()
-                }
-            }*/
             MenuItem {
                 text: qsTr("Create new project")
                 onClicked: pageStack.push(Qt.resolvedUrl("CreateProject.qml"))

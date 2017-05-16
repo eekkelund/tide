@@ -45,15 +45,11 @@ desktop-file-install --delete-original       \
   --dir %{buildroot}%{_datadir}/applications             \
    %{buildroot}%{_datadir}/applications/*.desktop
 
-##%%post
-#install -g nemo -o nemo -d /home/nemo/tIDE/
-#chown -R nemo:nemo /home/nemo/tIDE/
 
 %files
 %exclude %{_datadir}/%{name}/qml/pages/FileManagerPage.qml
 %exclude %{_datadir}/%{name}/qml/pages/BuildOutput.qml
 %exclude %{_datadir}/%{name}/qml/template-app
-%exclude %{_datadir}/%{name}/qml/templates
 %exclude %{_datadir}/%{name}/qml/pages/CreateProject.qml
 %exclude %{_datadir}/%{name}/qml/pages/ProjectHome.qml
 %exclude %{_datadir}/%{name}/qml/pages/AppOutput.qml

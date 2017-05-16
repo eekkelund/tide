@@ -1,12 +1,10 @@
 import QtQuick 2.2
 import Sailfish.Silica 1.0
 
-
 Flipable {
     id: flipable
     width: parent.width
     height: pgHead.height
-
     property bool flipped: false
 
     function searchActive(){

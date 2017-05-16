@@ -64,6 +64,7 @@ Dialog {
                 ComboBox {
                     id:cBox
                     width: parent.width / 2
+                    description: qsTr("File type")
                     menu: ContextMenu {
                         id: cMenu
                         MenuItem {
@@ -93,78 +94,86 @@ Dialog {
                             }
                         }
                         MenuItem {
-                            text: ".qml"
-                            onClicked: ext = text
+                            id:readyOnes
+                            width: parent.width
+                            height: cBoxx.height
+                            color:"transparent"
+                        ComboBox {
+                            id:cBoxx
+                            width: parent.width
+                            currentIndex: -1
+                            label: qsTr("Ready template")
+                            menu: ContextMenu {
+                                on_OpenChanged:{
+                                    if(!_open) {
+                                        cBoxx.currentItem=null
+                                    }
+                                }
+                                MenuItem {
+                                    text: ".qml"
+                                    onClicked:{
+                                        ext = text
+                                        cBox.currentItem = readyOnes
+                                        readyOnes.text=text
+                                        cMenu.hide()
+                                    }
+                                }
+                                MenuItem {
+                                    text: ".js"
+                                    onClicked:{
+                                        ext = text
+                                        cBox.currentItem = readyOnes
+                                        readyOnes.text=text
+                                        cMenu.hide()
+                                    }
+                                }
+                                MenuItem {
+                                    text: ".py"
+                                    onClicked:{
+                                        ext = text
+                                        cBox.currentItem = readyOnes
+                                        readyOnes.text=text
+                                        cMenu.hide()
+                                    }
+                                }
+                                MenuItem {
+                                    text: ".txt"
+                                    onClicked:{
+                                        ext = text
+                                        cBox.currentItem = readyOnes
+                                        readyOnes.text=text
+                                        cMenu.hide()
+                                    }
+                                }
+                                MenuItem {
+                                    text: ".sh"
+                                    onClicked:{
+                                        ext = text
+                                        cBox.currentItem = readyOnes
+                                        readyOnes.text=text
+                                        cMenu.hide()
+                                    }
+                                }
+                            }
                         }
-                        MenuItem {
-                            text: ".js"
-                            onClicked: ext = text
-                        }
-                        MenuItem {
-                            text: ".py"
-                            onClicked: ext = text
-                        }
-                        MenuItem {
-                            text: ".txt"
-                            onClicked: ext = text
                         }
                     }
                 }
             }
         }
     }
-    SilicaListView {
-        id:listView
-        anchors.top: fileAddList.bottom
-        width: page.width
-        height: page.height-fileAddList.height-Theme.itemSizeLarge
-        visible:showFolderList
-        enabled:visible
-        clip:true
-        property var files: []
-        model: ListModel{
-            id: listmodel
-            function loadNew(path2) {
-                clear()
-                listView.files = []
-                py.call('openFile.allfiles', [path2], function(result) {
-                    for (var i=0; i<result.length; i++) {
-                        listView.files.push(result[i].files)
-                        listmodel.append(result[i]);
-                    }
-                });
-            }
-        }
-        delegate: ListItem {
-            property string path2: pathh
-            id: litem
-            width: parent.width
-            height: Theme.itemSizeSmall
-            anchors {
-                left: parent.left
-                right: parent.right
-            }
-            onClicked: {
-                if (file.text.slice(-1) =="/") {
-                    listmodel.loadNew(path2);
-                    path=path2
-                }else {}
-
-            }
-            Label {
-                id: file
-                wrapMode: Text.WordWrap
-                width: parent.width
-                anchors.verticalCenter: parent.verticalCenter
-                x: Theme.paddingMedium
-                text: files
-
-            }
-        }
-    }
+   FileManagerComponent {
+       id:fileManagerComponent
+       anchors.top: fileAddList.bottom
+       width: page.width
+       height: page.height-fileAddList.height-Theme.itemSizeLarge
+       visible:showFolderList
+       enabled:visible
+   }
 
 
-    canAccept: fileName.text !== ""&& ext !==""&& ext !=="." && listView.files.indexOf(fileName.text + ext) == -1 ? true :false
+
+    canAccept: fileName.text !== ""&& ext !==""&& ext !=="." && fileManagerComponent.files.indexOf(fileName.text + ext) == -1 ? true :false
     onAccepted: {
         if (fileName.text !== ""&& ext !==""&& ext !==".") {
             fName = fileName.text
@@ -173,11 +182,14 @@ Dialog {
             }
             var titleOfFile=fName + ext
             callback()
-         //   singleFile=titleOfFile
+            //   singleFile=titleOfFile
             fileName.focus= false;
             fileName.text = ""
+            readyOnes.text=""
             fType.text =""
-            cBox.currentIndex = 0
+            cBox.currentIndex=0
+            cBoxx.currentItem = null
+
 
         }
     }
@@ -185,7 +197,9 @@ Dialog {
         fileName.focus= false;
         fileName.text = ""
         fType.text =""
-        cBox.currentIndex = 0
+        readyOnes.text=""
+        cBox.currentIndex=0
+        cBoxx.currentItem = null
         acceptDestination=Qt.resolvedUrl(accDest);
 
     }

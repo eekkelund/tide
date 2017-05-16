@@ -64,6 +64,7 @@ private:
     QString m_dictionary;
     qreal m_baseFontPointSize;
 
+    QTextCharFormat bashFormat;
     QTextCharFormat keywordFormat;
     QTextCharFormat qmlFormat;
     QTextCharFormat jsFormat;

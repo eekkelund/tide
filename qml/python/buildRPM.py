@@ -93,7 +93,10 @@ def start_proc():
 
 def kill():
     if(process.pid):
-        os.kill(process.pid, signal.SIGTERM)
+        try:
+            os.kill(process.pid, signal.SIGTERM)
+        except ProcessLookupError:
+            bgthread = None
     process.wait()
     bgthread = None
     return "stopperd"
