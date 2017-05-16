@@ -97,8 +97,8 @@ Page{
     onStatusChanged:{
         if((status !== PageStatus.Active)){
             return;
-        }
-        else{
+        } else {
+            projectName = ""
             if(!hadArgs){
                 var args = Qt.application.arguments
                 if(editorMode){

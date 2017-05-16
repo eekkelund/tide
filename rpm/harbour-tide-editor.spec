@@ -47,7 +47,6 @@ desktop-file-install --delete-original       \
 
 
 %files
-%exclude %{_datadir}/%{name}/qml/pages/FileManagerPage.qml
 %exclude %{_datadir}/%{name}/qml/pages/BuildOutput.qml
 %exclude %{_datadir}/%{name}/qml/template-app
 %exclude %{_datadir}/%{name}/qml/pages/CreateProject.qml

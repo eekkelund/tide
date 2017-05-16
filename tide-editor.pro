@@ -16,6 +16,7 @@ OTHER_FILES += qml/harbour-tide.qml \
     qml/pages/RestoreDialog.qml \
     qml/pages/MainPage.qml \
     qml/pages/SettingsPage.qml \
+    qml/pages/FileManagerPage.qml \
     translations/*.ts \
     harbour-tide-editor.desktop \
     rpm/harbour-tide-editor.spec

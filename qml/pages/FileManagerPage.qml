@@ -17,6 +17,7 @@ Page {
     property string title
     property bool showFormat
     signal formatClicked
+    property Page replacablePage
     property var callback
 
     function addNewFile(){
@@ -33,7 +34,8 @@ Page {
 
     FileModel {
         id: fileModel
-
+        directorySort: FileModel.SortDirectoriesBeforeFiles
+        includeHiddenFiles: includeHidden
         path: rootMode ? "/" : homePath
         active: page.status === PageStatus.Active
         onError: {
@@ -80,65 +82,44 @@ Page {
         delegate: ListItem {
             id: fileItem
 
-            enabled: {
-                var ena=true
+            enabled:{
                 if (model.isDir) {
-                    ena = true
+                    return true
                 } else {
-                    switch (model.mimeType) {
-                    case "application/vnd.android.package-archive":
-                        ena = false
-                        break
-                    case "application/x-rpm":
-                        ena=false
-                        break
-                    case "text/vcard":
-                        ena = true
-                        break
-                    case "text/plain":
-                    case "text/x-vnote":
-                        ena = true
-                        break
-                    case "application/pdf":
-                        ena = false
-                        break
-                    case "application/vnd.oasis.opendocument.spreadsheet":
-                    case "application/x-kspread":
-                    case "application/vnd.ms-excel":
-                    case "text/csv":
-                    case "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet":
-                    case "application/vnd.openxmlformats-officedocument.spreadsheetml.template":
-                        ena = false
-                        break
-                    case "application/vnd.oasis.opendocument.presentation":
-                    case "application/vnd.oasis.opendocument.presentation-template":
-                    case "application/x-kpresenter":
-                    case "application/vnd.ms-powerpoint":
-                    case "application/vnd.openxmlformats-officedocument.presentationml.presentation":
-                    case "application/vnd.openxmlformats-officedocument.presentationml.template":
-                        ena = false
-                        break
-                    case "application/vnd.oasis.opendocument.text-master":
-                    case "application/vnd.oasis.opendocument.text":
-                    case "application/vnd.oasis.opendocument.text-template":
-                    case "application/msword":
-                    case "application/rtf":
-                    case "application/x-mswrite":
-                    case "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
-                    case "application/vnd.openxmlformats-officedocument.wordprocessingml.template":
-                    case "application/vnd.ms-works":
-                        ena = false
-                        break
-                    default:
-                        if (mimeType.indexOf("audio/") == 0) {
-                            ena=false
-                        } else if (mimeType.indexOf("image/") == 0) {
-                            ena=false
-                        } else if (mimeType.indexOf("video/") == 0) {
-                            ena=false
+                    if (mimeType.indexOf("audio/") == 0 || mimeType.indexOf("video/") == 0 || mimeType.indexOf("image/") == 0) {
+                        return false
+                    } else if (fileModel.absolutePath.slice(-1) == "~") {
+                        return false
+                    }else if (mimeType.indexOf("text/") == 0) {
+                        return true
+                    }else if(mimeType.indexOf("application/") == 0){
+                        switch(mimeType) {
+                        case "application/pdf":
+                        case "application/vnd.oasis.opendocument.spreadsheet":
+                        case "application/x-kspread":
+                        case "application/vnd.ms-excel":
+                        case "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet":
+                        case "application/vnd.openxmlformats-officedocument.spreadsheetml.template":
+                        case "application/vnd.oasis.opendocument.presentation":
+                        case "application/vnd.oasis.opendocument.presentation-template":
+                        case "application/x-kpresenter":
+                        case "application/vnd.ms-powerpoint":
+                        case "application/vnd.openxmlformats-officedocument.presentationml.presentation":
+                        case "application/vnd.openxmlformats-officedocument.presentationml.template":
+                        case "application/vnd.oasis.opendocument.text-master":
+                        case "application/vnd.oasis.opendocument.text":
+                        case "application/vnd.oasis.opendocument.text-template":
+                        case "application/msword":
+                        case "application/x-mswrite":
+                        case "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
+                        case "application/vnd.openxmlformats-officedocument.wordprocessingml.template":
+                        case "application/vnd.ms-works":
+                            return false
+                        default:
+                            return true
                         }
                     }
-                    return ena
+                    else return false
                 }
             }
 
@@ -157,69 +138,7 @@ Page {
 
                     Image {
                         anchors.centerIn: parent
-                        source: {
-                            var iconSource
-                            if (model.isDir) {
-                                iconSource = "image://theme/icon-m-file-folder"
-                            } else {
-                                var iconType = "other"
-                                switch (model.mimeType) {
-                                case "application/vnd.android.package-archive":
-                                    iconType = "apk"
-                                    break
-                                case "application/x-rpm":
-                                    iconType = "rpm"
-                                    break
-                                case "text/vcard":
-                                    iconType = "vcard"
-                                    break
-                                case "text/plain":
-                                case "text/x-vnote":
-                                    iconType = "note"
-                                    break
-                                case "application/pdf":
-                                    iconType = "pdf"
-                                    break
-                                case "application/vnd.oasis.opendocument.spreadsheet":
-                                case "application/x-kspread":
-                                case "application/vnd.ms-excel":
-                                case "text/csv":
-                                case "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet":
-                                case "application/vnd.openxmlformats-officedocument.spreadsheetml.template":
-                                    iconType = "spreadsheet"
-                                    break
-                                case "application/vnd.oasis.opendocument.presentation":
-                                case "application/vnd.oasis.opendocument.presentation-template":
-                                case "application/x-kpresenter":
-                                case "application/vnd.ms-powerpoint":
-                                case "application/vnd.openxmlformats-officedocument.presentationml.presentation":
-                                case "application/vnd.openxmlformats-officedocument.presentationml.template":
-                                    iconType = "presentation"
-                                    break
-                                case "application/vnd.oasis.opendocument.text-master":
-                                case "application/vnd.oasis.opendocument.text":
-                                case "application/vnd.oasis.opendocument.text-template":
-                                case "application/msword":
-                                case "application/rtf":
-                                case "application/x-mswrite":
-                                case "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
-                                case "application/vnd.openxmlformats-officedocument.wordprocessingml.template":
-                                case "application/vnd.ms-works":
-                                    iconType = "formatted"
-                                    break
-                                default:
-                                    if (mimeType.indexOf("audio/") == 0) {
-                                        iconType = "audio"
-                                    } else if (mimeType.indexOf("image/") == 0) {
-                                        iconType = "image"
-                                    } else if (mimeType.indexOf("video/") == 0) {
-                                        iconType = "video"
-                                    }
-                                }
-                                iconSource = "image://theme/icon-m-file-" + iconType
-                            }
-                            return iconSource + (highlighted ? "?" + Theme.highlightColor : "")
-                        }
+                        source: Theme.iconForMimeType(model.mimeType)
                     }
                 }
                 Column {
@@ -250,15 +169,17 @@ Page {
             onClicked: {
                 if (model.isDir) {
                     pageStack.push(Qt.resolvedUrl("FileManagerPage.qml"),
-                                   { path: fileModel.appendPath(model.fileName), homePath: page.homePath, callback: page.callback })
-                } else {
+                                   { path: fileModel.appendPath(model.fileName), homePath: page.homePath, callback: page.callback, replacablePage:page.replacablePage})
+                }else if (!fileItem.enabled && fileModel.absolutePath.slice(-1) == "~"){
+                    showError(qsTr("This is autosaved file, open the regular one"))
+                }else if (!fileItem.enabled){
+                    showError(qsTr("No support for this file type.."))
+                }else {
                     var filePath = fileModel.path + "/" + model.fileName;
                     console.log("###", mimeType, filePath);
-                    //if (mimeType.indexOf("image/") == 0) {
                     if (typeof callback == "function") {
-                        callback(filePath);
+                        callback(filePath,replacablePage);
                     }
-                    //}
                 }
             }
         }

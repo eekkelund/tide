@@ -35,6 +35,10 @@ Flipable {
             searchField.errorHighlight = true
         }
     }
+    function openEditor(chooserPath,pageReplace){
+        pageStack.replaceAbove(pageReplace,Qt.resolvedUrl("../pages/EditorPage.qml"),{fullFilePath: chooserPath})
+        pageStack.nextPage()
+    }
 
     transform: Rotation {
         id: rotation
@@ -162,10 +166,14 @@ Flipable {
                     visible:!searchField.activeFocus && searchField.text.length<=0
                     enabled: !drawer.opened && !textChangedSave
                     onClicked:{
-                        console.log(previousPath)
-                        lmodel.loadNew(previousPath)
-                        drawer.open = true
+                        if(systemFM) {
+                            pageStack.push(Qt.resolvedUrl("../pages/FileManagerPage.qml"),{callback:flipable.openEditor,path:projectName?projectPath+"/"+projectName : homePath, replacablePage:pageStack.previousPage()})
+                        } else {
+                            lmodel.loadNew(previousPath)
+                            drawer.open = true
+                        }
                     }
+
                 }
                 IconButton {
                     icon.source: "image://theme/icon-m-flip"
