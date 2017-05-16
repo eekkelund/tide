@@ -270,22 +270,28 @@ void RealHighlighter::setDictionary(QString dictionary)
     this->rehighlight();
 }
 
-void RealHighlighter::setMultiLineHighlight(bool multiLineHLEnabled)
-{
-    if(m_multiLineHLEnabled) {
-        m_multiLineHLEnabled = multiLineHLEnabled;
-    }
-}
-
 void RealHighlighter::searchHighlight(QString str)
 {
-     HighlightingRule rule;
-     searchFormat.setBackground(QColor(m_highlightBackgroundColor));
-     searchFormat.setFontItalic(true);
-     searchFormat.setFontUnderline(true);
-     rule.pattern = QRegExp(str,Qt::CaseInsensitive);
-     rule.format = searchFormat;
-     highlightingRules.append(rule);
-     this->rehighlight();
+    HighlightingRule rule;
+    searchFormat.setBackground(QColor(m_highlightBackgroundColor));
+    searchFormat.setFontItalic(true);
+    searchFormat.setFontUnderline(true);
+    rule.pattern = QRegularExpression(str,QRegularExpression::CaseInsensitiveOption);
+    rule.format = searchFormat;
+    highlightingRules.append(rule);
+    this->rehighlight();
+}
+
+void RealHighlighter::enableHighlight(bool enable)
+{
+    if(enable) {
+        this->ruleUpdate();
+        this->rehighlight();
+    } else {
+        highlightingRules.clear();
+        //HighlightingRule rule;
+        //highlightingRules.append(rule);
+        this->rehighlight();
+    }
 }
 

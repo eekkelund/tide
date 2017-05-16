@@ -19,7 +19,8 @@ Flipable {
         text= text.toLowerCase()
         var myText = myeditor.text.toLowerCase()
         var match = myText.match(text)
-        documentHandler.searchHighlight(text)
+        if(highlight) documentHandler.setDictionary(fileType);
+        if(highlight) documentHandler.searchHighlight(text)
         if(match){
             if(direction=="back"){
                 myeditor.cursorPosition = myText.lastIndexOf(match[match.length-1], position)
@@ -104,7 +105,7 @@ Flipable {
                             }
                         }
                         if(text==""){
-                          documentHandler.setDictionary(fileType)
+                            if(highlight) documentHandler.setDictionary(fileType)
                         }
                         errorHighlight = false
                         searched = false

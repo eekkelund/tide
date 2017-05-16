@@ -108,8 +108,12 @@ ApplicationWindow
         //temporary
         py.call('settings.setTab', ['tabsize',tabSize], function(result) {});
     }
-    property bool multiLineHighLight //:
-    onMultiLineHighLightChanged: setSetting('multilinehl',multiLineHighLight)
+    property bool highlight //:true
+    onHighlightChanged: setSetting('highlight',highlight)
+    property bool includeHidden //:false
+    onIncludeHiddenChanged: setSetting('includehidden',includeHidden)
+    property bool systemFM //:false
+    onSystemFMChanged: setSetting('systemfm',systemFM)
 
     function setSetting(key, value){
         py.call('settings.set', [key, value], function(result) {});
@@ -155,9 +159,16 @@ ApplicationWindow
                         else plugins=false
                     });
                     py.call('settings.get', ['wrapmode'], function(result) {wrapMode=result})
-                    py.call('settings.get', ['multilinehl'], function(result) {
-                        if (result=="True") multiLineHighLight=true
-                        else multiLineHighLight=false
+                    py.call('settings.get', ['highlight'], function(result) {
+                        if (result=="True") highlight=true
+                        else highlight=false
+                    });
+                    py.call('settings.get', ['includehidden'], function(result) {
+                        if (result=="True") includeHidden=true
+                        else includeHidden=false
+                    }); py.call('settings.get', ['systemfm'], function(result) {
+                        if (result=="True") systemFM=true
+                        else systemFM=false
                     });
                     //temporary
                     if(!editorMode){

@@ -34,8 +34,8 @@ public:
 
     void setStyle(QString primaryColor, QString secondaryColor, QString highlightColor, QString secondaryHighlightColor, QString highlightBackgroundColor, QString highlightDimmerColor, qreal m_baseFontPointSize);
     void setDictionary(QString dictionary);
-    void setMultiLineHighlight(bool multiLineHLEnabled);
     void searchHighlight(QString str);
+    void enableHighlight(bool enable);
 
 protected:
     void highlightBlock(const QString &text) Q_DECL_OVERRIDE;
@@ -76,7 +76,6 @@ private:
     QTextCharFormat functionFormat;
     QTextCharFormat numberFormat;
     QTextCharFormat searchFormat;
-    bool m_multiLineHLEnabled;
     void loadDict(QString path, QStringList &patterns);
 };
 

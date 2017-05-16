@@ -82,19 +82,15 @@ Page {
             }
             ready =false
             return;
-        }
-        else {
+        } else {
             if(untitled){
                 py.call('editFile.untitledNumber', [homePath], function(result) {
                     fileTitle=result
                 });
-            }
-            else{
-                documentHandler.setMultiLineHighlight(multiLineHighLight)
-                documentHandler.setStyle(propertiesHighlightColor, stringHighlightColor,
-                                         qmlHighlightColor, javascriptHighlightColor,
-                                         commentHighlightColor, keywordsHighlightColor,
-                                         myeditor.font.pixelSize);
+            } else{
+                if(highlight) {
+                    setHighlight()
+                }
                 py.call('editFile.checkAutoSaved', [fullFilePath], function(result) {
                     if(!result){
                         py.call('editFile.openings', [fullFilePath], function(result) {
@@ -103,10 +99,18 @@ Page {
                             if(!editorMode){
                                 py.call('editFile.changeFiletype', [fileType], function(result){});
                             }
-                            documentHandler.setDictionary(fileType);
+                            if(highlight) {
+                                documentHandler.setDictionary(fileType);
+                            }
                         })
                     }else {
-                        if(fileTitle.slice(-1)!="~") pageStack.push(restoreD, {pathToFile:fullFilePath});
+                        if(fileTitle.slice(-1)!="~"){
+                            pageStack.push(restoreD, {pathToFile:fullFilePath});
+                        } else {
+                            if(highlight) {
+                                documentHandler.setDictionary(fileType);
+                            }
+                        }
                     }
                 })
             }
@@ -116,6 +120,43 @@ Page {
             hintLoader.start()
         }
         ready = true
+    }
+
+    function setHighlight() {
+        documentHandler.setStyle(propertiesHighlightColor, stringHighlightColor,
+                                 qmlHighlightColor, javascriptHighlightColor,
+                                 commentHighlightColor, keywordsHighlightColor,
+                                 myeditor.font.pixelSize);
+    }
+
+    function fileBrowser(file,path) {
+        if (file.text.slice(-1) =="/") {
+            lmodel.loadNew(path);
+        }else {
+            fullFilePath=path
+            py.call('editFile.checkAutoSaved', [fullFilePath], function(result) {
+                if(!result){
+                    py.call('editFile.openings', [fullFilePath], function(result) {
+                        fileTitle=result.fileTitle
+                        // singleFile=result.fileTitle
+                        documentHandler.text = result.text;
+                        fileType = /~$/.test(fileTitle) ? fileTitle.split(".").slice(-1)[0].slice(0, -1) :fileTitle.split(".").slice(-1)[0];
+                        previousPath=fullFilePath.substring(0,fullFilePath.lastIndexOf('/'))
+                        if(!editorMode){
+                            py.call('editFile.changeFiletype', [fileType], function(result){});
+                        }
+                        if(highlight) {
+                            setHighlight()
+                            documentHandler.setDictionary(fileType);
+                        }
+
+                    })
+                }else {
+                    pageStack.push(restoreD, {pathToFile:path});
+                }
+            })
+            myeditor.forceActiveFocus();
+        }
     }
 
     Drawer {
@@ -176,36 +217,7 @@ Page {
                     right: parent.right
                 }
                 onClicked: {
-                    if (file.text.slice(-1) =="/") {
-                        lmodel.loadNew(path);
-                    }else {
-                        fullFilePath=path
-                        py.call('editFile.checkAutoSaved', [fullFilePath], function(result) {
-                            if(!result){
-                                py.call('editFile.openings', [fullFilePath], function(result) {
-                                    fileTitle=result.fileTitle
-                                   // singleFile=result.fileTitle
-                                    documentHandler.text = result.text;
-                                    fileType= /~$/.test(fileTitle) ? fileTitle.split(".").slice(-1)[0].slice(0, -1) :fileTitle.split(".").slice(-1)[0];
-                                    previousPath=fullFilePath.substring(0,fullFilePath.lastIndexOf('/'))
-                                    if(!editorMode){
-                                        py.call('editFile.changeFiletype', [fileType], function(result){});
-                                    }
-                                    documentHandler.setMultiLineHighlight(multiLineHighLight)
-                                    documentHandler.setStyle(propertiesHighlightColor, stringHighlightColor,
-                                                             qmlHighlightColor, javascriptHighlightColor,
-                                                             commentHighlightColor, keywordsHighlightColor,
-                                                             myeditor.font.pixelSize);
-                                    documentHandler.setDictionary(fileType);
-
-                                })
-                            }else {
-                                pageStack.push(restoreD, {pathToFile:path});
-                            }
-                        })
-                        myeditor.forceActiveFocus();
-                    }
-
+                    fileBrowser(file,path)
                 }
                 Label {
                     id: file
@@ -408,5 +420,11 @@ Page {
     }
     AddFileDialog {
         id: dialog
+    }
+    Connections {
+        target: appWindow
+        onHighlightChanged: {
+            documentHandler.enableHighlight(highlight)
+        }
     }
 }

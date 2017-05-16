@@ -168,17 +168,17 @@ void DocumentHandler::setDictionary(QString dictionary)
     }
 }
 
-void DocumentHandler::setMultiLineHighlight(bool mLineEnabled)
-{
-    if (m_realhighlighter) {
-        m_realhighlighter->setMultiLineHighlight(mLineEnabled);
-    }
-}
-
 void DocumentHandler::searchHighlight(QString str)
 {
     if (m_realhighlighter) {
         m_realhighlighter->searchHighlight(str);
+    }
+}
+
+void DocumentHandler::enableHighlight(bool enable)
+{
+    if (m_realhighlighter) {
+        m_realhighlighter->enableHighlight(enable);
     }
 }
 

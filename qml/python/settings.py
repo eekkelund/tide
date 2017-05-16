@@ -25,7 +25,9 @@ editorDefaults={'darktheme': 'True',
 'plugins':'False',
 'wrapmode': 3,
 'tabsize': '4',
-'multilinehl':'False'
+'highlight': 'True',
+'includehidden': 'False',
+'systemfm': 'False'
 }
 
 def setDataPath(path,app):

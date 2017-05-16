@@ -42,7 +42,7 @@ Dialog{
             py.call('editFile.openings', [pathToFile], function(result) {
                 documentHandler.text = result.text;
                 fileTitle=result.fileTitle
-                documentHandler.setDictionary(fileType);
+                if(highlight) documentHandler.setDictionary(fileType);
                 py.call('editFile.savings', [pathToFile,result.text], function(result) {
                     fileTitle=result
                 });
