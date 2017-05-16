@@ -174,6 +174,15 @@ Flipable {
                     onClicked:editorMode ? pageStack.push(Qt.resolvedUrl("../pages/SplitPage.qml"),{fullFilePath: fullFilePath},PageStackAction.Immediate) : pageStack.replace(Qt.resolvedUrl("../pages/SplitPage.qml"),{fullFilePath: fullFilePath},PageStackAction.Immediate)
                 }
                 IconButton {
+                    icon.source: "image://theme/icon-m-developer-mode"
+                    visible: !searchField.activeFocus && searchField.text.length<=0
+                    enabled: visible
+                    onClicked: {
+                        pageStack.pushAttached(Qt.resolvedUrl("../pages/SettingsPage.qml"))
+                        pageStack.navigateForward()
+                    }
+                }
+                IconButton {
                     icon.source: "image://theme/icon-m-close"
                     visible:!searchField.activeFocus && searchField.text.length<=0
                     onClicked:{

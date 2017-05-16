@@ -63,122 +63,148 @@ Page {
             PageHeader {
                 title: qsTr("Settings")
             }
-            SectionHeader {
-                text: qsTr("Appearance & Theme")
-            }
-            TextSwitch {
-                text: qsTr("Line numbers")
-                checked: lineNums
-                onCheckedChanged: {
-                    lineNums = checked
+            Rectangle {
+                width: parent.width
+                height: testTextField.height
+                color: bgColor
+                TextArea {
+                    id:testTextField
+                    anchors {
+                        right: parent.right
+                        left: parent.left
+                        rightMargin:Theme.paddingMedium
+                        leftMargin:Theme.paddingMedium
+                    }
+                    height: fontSize + Theme.itemSizeSmall
+                    wrapMode: appWindow.wrapMode
+                    text: qsTr("This is example text how it would look like on editor")
+                    color: focus ? textColor : Theme.primaryColor
+                    font.pixelSize: fontSize
+                    font.family: fontType
+                    textMargin: 0
+                    textWidth: wrapMode !== Text.NoWrap ? width : Math.max(width, testTextField.implicitWidth)
+                    _flickableDirection: Flickable.HorizontalAndVerticalFlick
+
                 }
             }
-            Row{
-                TextSwitch {
-                    id:darkT
-                    checked: darkTheme
-                    text: qsTr("Dark Theme")
-                    width: column.width/2 -Theme.paddingSmall
-                    onCheckedChanged: {
-                        darkTheme = checked
-                        lightT.checked = !checked
-                        if(darkTheme){
-                            textColor="#cfbfad"
-                            qmlHighlightColor="#ff8bff"
-                            keywordsHighlightColor="#808bed"
-                            propertiesHighlightColor="#ff5555"
-                            javascriptHighlightColor="#8888ff"
-                            stringHighlightColor="#ffcd8b"
-                            commentHighlightColor="#cd8b00"
-                            bgColor="#1e1e27"
-                        }else{
-                            textColor=Theme.highlightColor
-                            qmlHighlightColor=Theme.highlightColor
-                            keywordsHighlightColor=Theme.highlightDimmerColor
-                            propertiesHighlightColor=Theme.primaryColor
-                            javascriptHighlightColor=Theme.secondaryHighlightColor
-                            stringHighlightColor=Theme.secondaryColor
-                            commentHighlightColor= Theme.highlightBackgroundColor
-                            bgColor="transparent"
+
+            ExpandingSection {
+                buttonHeight: Theme.itemSizeMedium
+                title:  qsTr("Appearance & Theme")
+                content.sourceComponent: Column {
+                    TextSwitch {
+                        text: qsTr("Line numbers")
+                        checked: lineNums
+                        onCheckedChanged: {
+                            lineNums = checked
                         }
                     }
-                }
-                TextSwitch {
-                    id:lightT
-                    checked: !darkTheme
-                    text: qsTr("Ambience Theme")
-                    width: column.width/2 -Theme.paddingSmall
-                    onCheckedChanged: {
-                        darkT.checked = !checked
-                    }
-                }
+                    Row{
+                        TextSwitch {
+                            id:darkT
+                            checked: darkTheme
+                            text: qsTr("Dark Theme")
+                            width: column.width/2 -Theme.paddingSmall
+                            onCheckedChanged: {
+                                darkTheme = checked
+                                lightT.checked = !checked
+                                if(darkTheme){
+                                    textColor="#cfbfad"
+                                    qmlHighlightColor="#ff8bff"
+                                    keywordsHighlightColor="#808bed"
+                                    propertiesHighlightColor="#ff5555"
+                                    javascriptHighlightColor="#8888ff"
+                                    stringHighlightColor="#ffcd8b"
+                                    commentHighlightColor="#cd8b00"
+                                    bgColor="#1e1e27"
+                                }else{
+                                    textColor=Theme.highlightColor
+                                    qmlHighlightColor=Theme.highlightColor
+                                    keywordsHighlightColor=Theme.highlightDimmerColor
+                                    propertiesHighlightColor=Theme.primaryColor
+                                    javascriptHighlightColor=Theme.secondaryHighlightColor
+                                    stringHighlightColor=Theme.secondaryColor
+                                    commentHighlightColor= Theme.highlightBackgroundColor
+                                    bgColor="transparent"
+                                }
+                            }
+                        }
+                        TextSwitch {
+                            id:lightT
+                            checked: !darkTheme
+                            text: qsTr("Ambience Theme")
+                            width: column.width/2 -Theme.paddingSmall
+                            onCheckedChanged: {
+                                darkT.checked = !checked
+                            }
+                        }
 
-            }
-            ComboBox {
-                label: qsTr("Color of:")
-                id: colorBox
-                menu: ContextMenu {
-                    MenuItem {
-                        text: qsTr("Text")
-                        color: textColor
                     }
-                    MenuItem {
-                        text: qsTr("QML Highlight")
-                        color: qmlHighlightColor
+                    ComboBox {
+                        label: qsTr("Color of:")
+                        id: colorBox
+                        menu: ContextMenu {
+                            MenuItem {
+                                text: qsTr("Text")
+                                color: textColor
+                            }
+                            MenuItem {
+                                text: qsTr("QML Highlight")
+                                color: qmlHighlightColor
+                            }
+                            MenuItem {
+                                text: qsTr("Keywords Highlight")
+                                color: keywordsHighlightColor
+                            }
+                            MenuItem {
+                                text: qsTr("Properties Highlight")
+                                color: propertiesHighlightColor
+                            }
+                            MenuItem {
+                                text: qsTr("Javascript Highlight")
+                                color: javascriptHighlightColor
+                            }
+                            MenuItem {
+                                text: qsTr("String Highlight")
+                                color: stringHighlightColor
+                            }
+                            MenuItem {
+                                text: qsTr("Comment Highlight")
+                                color: commentHighlightColor
+                            }
+                            MenuItem {
+                                text: qsTr("Background")
+                                color:bgColor
+                            }
+                        }
                     }
-                    MenuItem {
-                        text: qsTr("Keywords Highlight")
-                        color: keywordsHighlightColor
-                    }
-                    MenuItem {
-                        text: qsTr("Properties Highlight")
-                        color: propertiesHighlightColor
-                    }
-                    MenuItem {
-                        text: qsTr("Javascript Highlight")
-                        color: javascriptHighlightColor
-                    }
-                    MenuItem {
-                        text: qsTr("String Highlight")
-                        color: stringHighlightColor
-                    }
-                    MenuItem {
-                        text: qsTr("Comment Highlight")
-                        color: commentHighlightColor
-                    }
-                    MenuItem {
-                        text: qsTr("Background")
-                        color:bgColor
-                    }
-                }
-            }
 
-            Slider {
-                id: slider
-                onReleased: {
-                    setColor(colorBox.currentIndex, Qt.hsla((gradient_color/100),1.0,0.5,1.0))
-                }
-                Rectangle {
-                    id: background
-                    x: slider.leftMargin
-                    z: -1
-                    width: slider._grooveWidth
-                    height: Theme.paddingMedium
-                    anchors.top: parent.verticalCenter
-                    anchors.topMargin: -Theme.paddingLarge*2
+                    Slider {
+                        id: slider
+                        onReleased: {
+                            setColor(colorBox.currentIndex, Qt.hsla((gradient_color/100),1.0,0.5,1.0))
+                        }
+                        Rectangle {
+                            id: background
+                            x: slider.leftMargin
+                            z: -1
+                            width: slider._grooveWidth
+                            height: Theme.paddingMedium
+                            anchors.top: parent.verticalCenter
+                            anchors.topMargin: -Theme.paddingLarge*2
 
-                    ShaderEffect {
-                        id: rainbow
-                        property variant src: background
-                        property real saturation: 1.0
-                        property real lightness: 0.5
-                        property real alpha: 1.0
+                            ShaderEffect {
+                                id: rainbow
+                                property variant src: background
+                                property real saturation: 1.0
+                                property real lightness: 0.5
+                                property real alpha: 1.0
 
-                        width: parent.width
-                        height: parent.height
+                                width: parent.width
+                                height: parent.height
 
-                        // Fragment shader to create hue color wheel background
-                        fragmentShader: "
+                                // Fragment shader to create hue color wheel background
+                                fragmentShader: "
                                         varying highp vec2 coord;
                                         varying highp vec2 qt_TexCoord0;
                                         uniform sampler2D src;
@@ -221,190 +247,193 @@ Page {
                                             lowp vec4 tex = texture2D(src, qt_TexCoord0);
                                             gl_FragColor = vec4(r+m,g+m,b+m,alpha) * qt_Opacity;
                                         }"
+                            }
+                        }
+
+                        width: parent.width
+                        minimumValue: 0
+                        maximumValue: 100
+                        stepSize: 1
+                        value: gradient_color
+                        valueText: "|"
+                        onValueChanged: {
+                            gradient_color = value
+                        }
+                        onPressAndHold: cancel()
+
+                        Label {
+                            width: parent.width
+                            wrapMode: Text.Wrap
+                            font.pixelSize: Theme.fontSizeSmall
+                            horizontalAlignment: Text.AlignHCenter
+                            anchors.top: parent.verticalCenter
+                            anchors.topMargin: Theme.paddingMedium*2
+                            color: Qt.hsla((gradient_color/100),1.0,0.5,1.0)
+                            text: colorBox.currentItem.text
+                        }
+                    }
+
+                    TextSwitch {
+                        text: qsTr("Highlighting")
+                        description: qsTr("Disabling improves slightly file loading time")
+                        checked: highlight
+                        onCheckedChanged: {
+                            highlight = checked
+                        }
                     }
                 }
-
-                width: parent.width
-                minimumValue: 0
-                maximumValue: 100
-                stepSize: 1
-                value: gradient_color
-                valueText: "|"
-                onValueChanged: {
-                    gradient_color = value
-                }
-                onPressAndHold: cancel()
-
-                Label {
-                    width: parent.width
-                    wrapMode: Text.Wrap
-                    font.pixelSize: Theme.fontSizeSmall
-                    horizontalAlignment: Text.AlignHCenter
-                    anchors.top: parent.verticalCenter
-                    anchors.topMargin: Theme.paddingMedium*2
-                    color: Qt.hsla((gradient_color/100),1.0,0.5,1.0)
-                    text: colorBox.currentItem.text
-                }
             }
-            TextSwitch {
-                text: qsTr("Multi-line comment highlighting")
-                description: qsTr("Disabling improves file loading time")
-                checked: multiLineHighLight
-                onCheckedChanged: {
-                    multiLineHighLight = checked
+            ExpandingSection {
+                buttonHeight: Theme.itemSizeMedium
+                title: qsTr("File Manager")
+                content.sourceComponent: Column {
+                    TextSwitch {
+                        text: qsTr("System file manager")
+                        checked: systemFM
+                        description: qsTr("Use system file manager in editor")
+                        onCheckedChanged: {
+                            systemFM = checked
+                        }
+                    }
+                    TextSwitch {
+                        text: qsTr("Show hidden files")
+                        checked: includeHidden
+                        onCheckedChanged: {
+                            includeHidden = checked
+                        }
+                    }
                 }
             }
 
+            ExpandingSection {
+                buttonHeight: Theme.itemSizeMedium
+                title: qsTr("Behaviour")
+                content.sourceComponent: Column {
+                    TextSwitch {
+                        text: qsTr("Automatic saving")
+                        checked: autoSave
+                        onCheckedChanged: {
+                            autoSave = checked
+                        }
+                    }
+                    Slider {
+                        label: qsTr("Indent size")
+                        width: parent.width
+                        value: indentSize
+                        minimumValue: 0
+                        valueText: (value==0) ? qsTr("Off") : value
+                        stepSize:1
+                        maximumValue: 8
+                        onReleased: {
+                            indentSize = sliderValue
+                        }
+                    }
+                    Slider {
+                        visible: !editorMode
+                        enabled: visible
+                        label: qsTr("Tab size")
+                        width: parent.width
+                        value: tabSize
+                        minimumValue: 1
+                        valueText: (value<=1) ? qsTr("Real tab") : value +" "+ qsTr("spaces")
+                        stepSize:1
+                        maximumValue: 8
+                        onReleased: {
+                            tabSize = sliderValue
+                        }
+                    }
+                }
+            }
 
-            SectionHeader {
-                text: qsTr("Automatic")
-            }
-            TextSwitch {
-                text: qsTr("Auto saving")
-                checked: autoSave
-                onCheckedChanged: {
-                    autoSave = checked
+            ExpandingSection {
+                buttonHeight: Theme.itemSizeMedium
+                title: qsTr("Font")
+                content.sourceComponent: Column {
+                    ComboBox {
+                        id: fontBox
+                        label: qsTr("Font size:")
+
+                        value:appWindow.fontSize
+                        //currentIndex: appWindow.fontSize
+
+                        property variant values: [[qsTr("Tiny"), Theme.fontSizeTiny], [qsTr("ExtraSmall"), Theme.fontSizeExtraSmall], [qsTr("Small"), Theme.fontSizeSmall],[qsTr("Medium"), Theme.fontSizeMedium], [qsTr("Large"), Theme.fontSizeLarge], [qsTr("ExtraLarge"), Theme.fontSizeExtraLarge], [qsTr("Huge"), Theme.fontSizeHuge]]
+
+                        menu: ContextMenu {
+                            Repeater {
+                                model: fontBox.values.length
+                                MenuItem {
+                                    font.pixelSize:  fontBox.values[index][1]
+                                    text: fontBox.values[index][0]
+                                    onClicked: appWindow.fontSize = fontBox.values[index][1]
+                                }
+                            }
+                        }
+                    }
+                    ComboBox {
+                        id: wrapModeBox
+                        label: qsTr("Wrap mode:")
+                        value: values[appWindow.wrapMode]
+                        currentIndex: appWindow.wrapMode
+
+                        property variant values: [qsTr("No wrap"), qsTr("Word wrap"),qsTr("Wrap anywhere"), qsTr("Try to word wrap, otherwise anywhere")]
+
+                        menu: ContextMenu {
+                            Repeater {
+                                model: wrapModeBox.values.length
+                                MenuItem {
+                                    text: wrapModeBox.values[index]
+                                    onClicked: appWindow.wrapMode = index
+                                }
+                            }
+                        }
+                    }
+
+                    ComboBox {
+                        id: fontTypeBox
+                        label: qsTr("Font:")
+                        value:appWindow.fontType
+                        //currentIndex: appWindow.fontSize
+
+                        property variant values: ["Sail Sans Pro Light","Sail Sans Pro ExtraLight","Open sans","Open sans Mono","DejaVu Serif","DejaVu Sans","DejaVu Sans Mono","Amiri","WenQuanYi Zen Hei","WenQuanYi Zen Hei Mono","Symbola"]
+
+                        menu: ContextMenu {
+                            Repeater {
+                                model: fontTypeBox.values.length
+                                MenuItem {
+                                    text: fontTypeBox.values[index]
+                                    onClicked: appWindow.fontType =fontTypeBox.values[index]
+                                }
+                            }
+                        }
+                    }
                 }
             }
-            Slider {
-                label: qsTr("Indent size")
-                width: parent.width
-                value: indentSize
-                minimumValue: 0
-                valueText: (value==0) ? qsTr("Off") : value
-                stepSize:1
-                maximumValue: 8
-                onReleased: {
-                    indentSize = sliderValue
-                }
-            }
-            Slider {
+            ExpandingSection {
+                buttonHeight: Theme.itemSizeMedium
+                title: qsTr("Debugging")
                 visible: !editorMode
                 enabled: visible
-                label: qsTr("Tab size")
-                width: parent.width
-                value: tabSize
-                minimumValue: 1
-                valueText: (value<=1) ? qsTr("Real tab") : value +" "+ qsTr("spaces")
-                stepSize:1
-                maximumValue: 8
-                onReleased: {
-                    tabSize = sliderValue
-                }
-            }
-
-            SectionHeader {
-                text: qsTr("Font")
-            }
-            ComboBox {
-                id: fontBox
-                label: qsTr("Font size:")
-                value:appWindow.fontSize
-                //currentIndex: appWindow.fontSize
-
-                property variant values: [[qsTr("Tiny"), Theme.fontSizeTiny], [qsTr("ExtraSmall"), Theme.fontSizeExtraSmall], [qsTr("Small"), Theme.fontSizeSmall],[qsTr("Medium"), Theme.fontSizeMedium], [qsTr("Large"), Theme.fontSizeLarge], [qsTr("ExtraLarge"), Theme.fontSizeExtraLarge], [qsTr("Huge"), Theme.fontSizeHuge]]
-
-                menu: ContextMenu {
-                    Repeater {
-                        model: fontBox.values.length
-                        MenuItem {
-                            text: fontBox.values[index][0]
-                            onClicked: appWindow.fontSize = fontBox.values[index][1]
+                content.sourceComponent: Column {
+                    TextSwitch {
+                        visible: !editorMode
+                        enabled: visible
+                        text: qsTr("QML TRACE")
+                        checked: trace
+                        onCheckedChanged: {
+                            trace = checked
+                        }
+                    }
+                    TextSwitch {
+                        visible: !editorMode
+                        enabled: visible
+                        text: qsTr("DEBUG PLUGINS")
+                        checked: plugins
+                        onCheckedChanged: {
+                            plugins = checked
                         }
                     }
                 }
             }
-            ComboBox {
-                id: wrapModeBox
-                label: qsTr("Wrap mode:")
-                value: values[appWindow.wrapMode]
-                currentIndex: appWindow.wrapMode
-
-                property variant values: [qsTr("No wrap"), qsTr("Word wrap"),qsTr("Wrap anywhere"), qsTr("Try to word wrap, otherwise anywhere")]
-
-                menu: ContextMenu {
-                    Repeater {
-                        model: wrapModeBox.values.length
-                        MenuItem {
-                            text: wrapModeBox.values[index]
-                            onClicked: appWindow.wrapMode = index
-                        }
-                    }
-                }
-            }
-            ComboBox {
-                label: qsTr("Font:")
-                value: fontType
-
-                menu: ContextMenu {
-                    MenuItem {
-                        text: qsTr("Sail Sans Pro Light")
-                        onClicked:{
-                            fontType = Theme.fontFamily;
-                        }
-                    }
-                    MenuItem {
-                        text: qsTr("Open Sans")
-                        onClicked:{
-                            fontType = "Open Sans";
-                        }
-                    }
-                    MenuItem {
-                        text:qsTr("Helvetica")
-                        onClicked:{
-                            fontType = "Helvetica";
-                        }
-                    }
-                    MenuItem {
-                        text: qsTr("Droid Sans Mono")
-                        onClicked:{
-                            fontType = "Droid Sans Mono";
-                        }
-                    }
-                    MenuItem {
-                        text: qsTr("Comic Sans")
-                        onClicked:{
-                            fontType = "Comic Sans";
-                        }
-                    }
-                    MenuItem {
-                        text: qsTr("Ubuntu")
-                        onClicked:{
-                            fontType = "Ubuntu";
-                        }
-                    }
-                    MenuItem {
-                        text: qsTr("DejaVu Sans Mono")
-                        onClicked:{
-                            fontType = "DejaVu Sans Mono";
-                        }
-                    }
-                }
-            }
-            SectionHeader {
-                visible: !editorMode
-                enabled: visible
-                text: qsTr("Debugging")
-            }
-            TextSwitch {
-                visible: !editorMode
-                enabled: visible
-                text: qsTr("QML TRACE")
-                checked: trace
-                onCheckedChanged: {
-                    trace = checked
-                }
-            }
-            TextSwitch {
-                visible: !editorMode
-                enabled: visible
-                text: qsTr("DEBUG PLUGINS")
-                checked: plugins
-                onCheckedChanged: {
-                    plugins = checked
-                }
-            }
-
         }
 
 
