@@ -254,6 +254,14 @@
         <source>Filetype</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Ready template</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>File type</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AppOutput</name>
@@ -361,10 +369,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>New file</source>
         <translation type="unfinished"></translation>
     </message>
@@ -393,6 +397,10 @@
     </message>
     <message>
         <source>Go /usr/share</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No support for this file type..</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -498,14 +506,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Automatic</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Auto saving</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Indent size</source>
         <translation type="unfinished"></translation>
     </message>
@@ -523,34 +523,6 @@
     </message>
     <message>
         <source>Large</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Sail Sans Pro Light</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Open Sans</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Helvetica</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Droid Sans Mono</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Comic Sans</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ubuntu</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>DejaVu Sans Mono</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -666,11 +638,39 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Multi-line comment highlighting</source>
+        <source>Highlighting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Disabling improves file loading time</source>
+        <source>Disabling improves slightly file loading time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This is example text how it would look like on editor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Behaviour</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Automatic saving</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>File Manager</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>System file manager</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use system file manager in editor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show hidden files</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

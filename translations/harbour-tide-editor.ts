@@ -4,13 +4,13 @@
 <context>
     <name></name>
     <message id="filemanager-la-file_details">
-        <location filename="../qml/pages/FileManagerPage.qml" line="241"/>
+        <location filename="../qml/pages/FileManagerPage.qml" line="160"/>
         <source>%1, %2</source>
         <extracomment>Shows size and modification date, e.g. &quot;15.5MB, 02/03/2016&quot;</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message id="filemanager-la-no_files">
-        <location filename="../qml/pages/FileManagerPage.qml" line="268"/>
+        <location filename="../qml/pages/FileManagerPage.qml" line="189"/>
         <source>No files</source>
         <translation type="unfinished"></translation>
     </message>
@@ -297,18 +297,28 @@
 <context>
     <name>AddFileDialog</name>
     <message>
-        <location filename="../qml/pages/AddFileDialog.qml" line="40"/>
+        <location filename="../qml/pages/AddFileDialog.qml" line="42"/>
         <source>Add</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AddFileDialog.qml" line="60"/>
+        <location filename="../qml/pages/AddFileDialog.qml" line="62"/>
         <source>Name of the file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AddFileDialog.qml" line="79"/>
+        <location filename="../qml/pages/AddFileDialog.qml" line="69"/>
+        <source>File type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AddFileDialog.qml" line="82"/>
         <source>Filetype</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AddFileDialog.qml" line="107"/>
+        <source>Ready template</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -388,7 +398,7 @@
     </message>
     <message>
         <location filename="../qml/pages/CreatorHome.qml" line="35"/>
-        <location filename="../qml/pages/CreatorHome.qml" line="145"/>
+        <location filename="../qml/pages/CreatorHome.qml" line="134"/>
         <source>No projects yet</source>
         <translation type="unfinished"></translation>
     </message>
@@ -403,27 +413,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/CreatorHome.qml" line="74"/>
+        <location filename="../qml/pages/CreatorHome.qml" line="63"/>
         <source>Create new project</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/CreatorHome.qml" line="83"/>
+        <location filename="../qml/pages/CreatorHome.qml" line="72"/>
         <source>Projects</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/CreatorHome.qml" line="121"/>
+        <location filename="../qml/pages/CreatorHome.qml" line="110"/>
         <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/CreatorHome.qml" line="122"/>
+        <location filename="../qml/pages/CreatorHome.qml" line="111"/>
         <source>Deleting project</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/CreatorHome.qml" line="148"/>
+        <location filename="../qml/pages/CreatorHome.qml" line="137"/>
         <source>Open an existing project</source>
         <translation type="unfinished"></translation>
     </message>
@@ -431,27 +441,22 @@
 <context>
     <name>EditorPage</name>
     <message>
-        <location filename="../qml/pages/EditorPage.qml" line="153"/>
+        <location filename="../qml/pages/EditorPage.qml" line="191"/>
         <source>About &amp; Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/EditorPage.qml" line="159"/>
+        <location filename="../qml/pages/EditorPage.qml" line="197"/>
         <source>New file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/EditorPage.qml" line="168"/>
+        <location filename="../qml/pages/EditorPage.qml" line="206"/>
         <source>Open file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/EditorPage.qml" line="262"/>
-        <source>Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/EditorPage.qml" line="290"/>
+        <location filename="../qml/pages/EditorPage.qml" line="286"/>
         <source>Tap to show top bar</source>
         <translation type="unfinished"></translation>
     </message>
@@ -459,28 +464,38 @@
 <context>
     <name>FileManagerPage</name>
     <message>
-        <location filename="../qml/pages/FileManagerPage.qml" line="55"/>
+        <location filename="../qml/pages/FileManagerPage.qml" line="57"/>
         <source>Go /usr/share</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FileManagerPage.qml" line="55"/>
+        <location filename="../qml/pages/FileManagerPage.qml" line="57"/>
         <source>Go to root</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FileManagerPage.qml" line="61"/>
+        <location filename="../qml/pages/FileManagerPage.qml" line="63"/>
         <source>Go to home</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FileManagerPage.qml" line="61"/>
+        <location filename="../qml/pages/FileManagerPage.qml" line="63"/>
         <source>Go SD Card</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FileManagerPage.qml" line="66"/>
+        <location filename="../qml/pages/FileManagerPage.qml" line="68"/>
         <source>Add file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/FileManagerPage.qml" line="174"/>
+        <source>This is autosaved file, open the regular one</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/FileManagerPage.qml" line="176"/>
+        <source>No support for this file type..</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -593,237 +608,227 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="67"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="93"/>
         <source>Appearance &amp; Theme</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="70"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="96"/>
         <source>Line numbers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="80"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="106"/>
         <source>Dark Theme</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="109"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="135"/>
         <source>Ambience Theme</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="118"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="144"/>
         <source>Color of:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="122"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="148"/>
         <source>Text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="126"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="152"/>
         <source>QML Highlight</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="130"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="156"/>
         <source>Keywords Highlight</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="134"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="160"/>
         <source>Properties Highlight</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="138"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="164"/>
         <source>Javascript Highlight</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="142"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="168"/>
         <source>String Highlight</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="146"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="172"/>
         <source>Comment Highlight</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="150"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="176"/>
         <source>Background</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="250"/>
-        <source>Multi-line comment highlighting</source>
+        <location filename="../qml/pages/SettingsPage.qml" line="277"/>
+        <source>Highlighting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="251"/>
-        <source>Disabling improves file loading time</source>
+        <location filename="../qml/pages/SettingsPage.qml" line="278"/>
+        <source>Disabling improves slightly file loading time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="260"/>
-        <source>Automatic</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="263"/>
-        <source>Auto saving</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="270"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="320"/>
         <source>Indent size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="274"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="324"/>
         <source>Off</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="284"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="334"/>
         <source>Tab size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="288"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="338"/>
         <source>Real tab</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="288"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="338"/>
         <source>spaces</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="297"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="350"/>
         <source>Font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="301"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="354"/>
         <source>Font size:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="305"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="359"/>
         <source>ExtraSmall</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="305"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="359"/>
         <source>Small</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="305"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="359"/>
         <source>Medium</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="305"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="359"/>
         <source>Large</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="305"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="359"/>
         <source>Tiny</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="305"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="359"/>
         <source>ExtraLarge</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="305"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="359"/>
         <source>Huge</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="319"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="80"/>
+        <source>This is example text how it would look like on editor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="288"/>
+        <source>File Manager</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="291"/>
+        <source>System file manager</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="293"/>
+        <source>Use system file manager in editor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="299"/>
+        <source>Show hidden files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="310"/>
+        <source>Behaviour</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="313"/>
+        <source>Automatic saving</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="374"/>
         <source>Wrap mode:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="323"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="378"/>
         <source>No wrap</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="323"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="378"/>
         <source>Word wrap</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="323"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="378"/>
         <source>Wrap anywhere</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="323"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="378"/>
         <source>Try to word wrap, otherwise anywhere</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="336"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="393"/>
         <source>Font:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="341"/>
-        <source>Sail Sans Pro Light</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="347"/>
-        <source>Open Sans</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="353"/>
-        <source>Helvetica</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="359"/>
-        <source>Droid Sans Mono</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="365"/>
-        <source>Comic Sans</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="371"/>
-        <source>Ubuntu</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="377"/>
-        <source>DejaVu Sans Mono</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="387"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="413"/>
         <source>Debugging</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="392"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="418"/>
         <source>QML TRACE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="401"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="427"/>
         <source>DEBUG PLUGINS</source>
         <translation type="unfinished"></translation>
     </message>
@@ -831,7 +836,7 @@
 <context>
     <name>TopBar</name>
     <message>
-        <location filename="../qml/components/TopBar.qml" line="95"/>
+        <location filename="../qml/components/TopBar.qml" line="98"/>
         <source>Search</source>
         <translation type="unfinished"></translation>
     </message>

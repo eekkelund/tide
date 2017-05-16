@@ -244,15 +244,23 @@
     <name>AddFileDialog</name>
     <message>
         <source>Add</source>
-        <translation>Lägg till</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Name of the file</source>
-        <translation>Filnamn</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Filetype</source>
-        <translation>Filtyp</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ready template</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>File type</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -353,24 +361,20 @@
 <context>
     <name>EditorPage</name>
     <message>
-        <source>Open file</source>
-        <translation>Öppna fil</translation>
-    </message>
-    <message>
         <source>Tap to show top bar</source>
         <translation>Tryck för att visa toppfält</translation>
     </message>
     <message>
-        <source>Settings</source>
-        <translation>Inställningar</translation>
+        <source>About &amp; Help</source>
+        <translation type="unfinished">Om &amp; Hjälp</translation>
     </message>
     <message>
         <source>New file</source>
-        <translation>Ny fil</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>About &amp; Help</source>
-        <translation>Om &amp; Hjälp</translation>
+        <source>Open file</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -394,6 +398,14 @@
     <message>
         <source>Go /usr/share</source>
         <translation>Gå till /usr/share</translation>
+    </message>
+    <message>
+        <source>No support for this file type..</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This is autosaved file, open the regular one</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -498,14 +510,6 @@
         <translation>Teckensnitt:</translation>
     </message>
     <message>
-        <source>Automatic</source>
-        <translation>Automatiskt</translation>
-    </message>
-    <message>
-        <source>Auto saving</source>
-        <translation>Spara automatiskt</translation>
-    </message>
-    <message>
         <source>Indent size</source>
         <translation>Indragsstorlek</translation>
     </message>
@@ -524,34 +528,6 @@
     <message>
         <source>Large</source>
         <translation>Stor</translation>
-    </message>
-    <message>
-        <source>Sail Sans Pro Light</source>
-        <translation>Sail Sans Pro Light</translation>
-    </message>
-    <message>
-        <source>Open Sans</source>
-        <translation>Open Sans</translation>
-    </message>
-    <message>
-        <source>Helvetica</source>
-        <translation>Helvetica</translation>
-    </message>
-    <message>
-        <source>Droid Sans Mono</source>
-        <translation>Droid Sans Mono</translation>
-    </message>
-    <message>
-        <source>Comic Sans</source>
-        <translation>Comic Sans</translation>
-    </message>
-    <message>
-        <source>Ubuntu</source>
-        <translation>Ubuntu</translation>
-    </message>
-    <message>
-        <source>DejaVu Sans Mono</source>
-        <translation>DejaVu Sans Mono</translation>
     </message>
     <message>
         <source>Off</source>
@@ -666,11 +642,39 @@
         <translation>Enorm</translation>
     </message>
     <message>
-        <source>Multi-line comment highlighting</source>
+        <source>Highlighting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Disabling improves file loading time</source>
+        <source>Disabling improves slightly file loading time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This is example text how it would look like on editor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Behaviour</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Automatic saving</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>File Manager</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>System file manager</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use system file manager in editor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show hidden files</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
