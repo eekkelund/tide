@@ -31,15 +31,12 @@ ApplicationWindow
     allowedOrientations: defaultAllowedOrientations
     _defaultPageOrientations: defaultAllowedOrientations
 
-    property string homePath: StandardPaths.home
+    property string homePath: rootMode ? "/" : StandardPaths.home
     property string projectPath:rootMode ? "/usr/share/": homePath+"/tIDE/Projects"
     property string patchPath:rootMode ? "/usr/share/": homePath+"/tIDE/Patches"
     property string buildPath: homePath+"/rpmbuild"
     property string projectName
     property string filePath
-   // property string singleFile
-    //property string projectQmlPath:(projectPath +"/"+ projectName+"/qml/"+ projectName+".qml");
-    //property bool split: false
     property bool rootMode: root
     property string app: appName
     property bool editorMode: app==="harbour-tide-editor"

@@ -45,7 +45,10 @@ DISTFILES += \
     qml/python/deleteProject.py \
     qml/pages/SplitPage.qml \
     qml/pages/EditorPage.qml \
-    qml/components/TopBar.qml
+    qml/components/TopBar.qml \
+    qml/components/EditorArea.qml \
+    qml/components/LineNumArea.qml \
+    qml/components/FileManagerComponent.qml
 
 HEADERS += \
     src/realhighlighter.h \

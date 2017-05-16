@@ -35,7 +35,10 @@ DISTFILES += \
     qml/pages/AboutPage.qml \
     qml/pages/SplitPage.qml \
     qml/pages/EditorPage.qml \
-    qml/components/TopBar.qml
+    qml/components/TopBar.qml \
+    qml/components/FileManagerComponent.qml \
+    qml/components/LineNumArea.qml \
+    qml/components/EditorArea.qml
 
 HEADERS += \
     src/realhighlighter.h \

@@ -17,12 +17,14 @@
 import QtQuick 2.2
 import Sailfish.Silica 1.0
 import io.thp.pyotherside 1.3
+import "../components"
 
 Dialog {
     on_ActivatedChanged: {
         if(_activated && showFolderList){
-            listmodel.loadNew(path)
+            fileManagerComponent.listmodel.loadNew(path)
         }
+        ext=""
         acceptDestination=Qt.resolvedUrl(accDest)
         acceptDestinationAction= PageStackAction.Replace
     }
