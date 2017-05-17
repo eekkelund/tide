@@ -35,6 +35,12 @@ Page {
             height: parent.height
             inSplitView:true
             drawer.parent: column1
+            topBar.onFolderOpen: {
+                fullFilePath = newPath
+                splitPage.fullFilePath = fullFilePath
+                editor=1
+            }
+
             restoreD.onDone:{
                 splitPage.fullFilePath = fullFilePath
                 editor=1
@@ -98,6 +104,11 @@ Page {
             height: parent.height
             inSplitView: true
             drawer.parent: column2
+            topBar.onFolderOpen: {
+                fullFilePath = newPath
+                splitPage.fullFilePath = fullFilePath
+                editor=2
+            }
             restoreD.onDone:{
                 splitPage.fullFilePath = fullFilePath
                 editor=2

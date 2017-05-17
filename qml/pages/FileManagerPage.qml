@@ -4,8 +4,8 @@
 
 import QtQuick 2.2
 import Sailfish.Silica 1.0
-import Nemo.FileManager 1.0
-import Sailfish.FileManager 1.0
+;import Nemo.FileManager 1.0
+;import Sailfish.FileManager 1.0
 import io.thp.pyotherside 1.3
 
 Page {
@@ -17,7 +17,7 @@ Page {
     property string title
     property bool showFormat
     signal formatClicked
-    property Page replacablePage
+    property Page currentPage
     property var callback
 
     function addNewFile(){
@@ -169,7 +169,7 @@ Page {
             onClicked: {
                 if (model.isDir) {
                     pageStack.push(Qt.resolvedUrl("FileManagerPage.qml"),
-                                   { path: fileModel.appendPath(model.fileName), homePath: page.homePath, callback: page.callback, replacablePage:page.replacablePage})
+                                   { path: fileModel.appendPath(model.fileName), homePath: page.homePath, callback: page.callback, currentPage: page.currentPage})
                 }else if (!fileItem.enabled && fileModel.absolutePath.slice(-1) == "~"){
                     showError(qsTr("This is autosaved file, open the regular one"))
                 }else if (!fileItem.enabled){
@@ -178,7 +178,7 @@ Page {
                     var filePath = fileModel.path + "/" + model.fileName;
                     console.log("###", mimeType, filePath);
                     if (typeof callback == "function") {
-                        callback(filePath,replacablePage);
+                        callback(filePath, currentPage);
                     }
                 }
             }

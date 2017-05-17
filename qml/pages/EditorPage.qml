@@ -36,7 +36,8 @@ Page {
     property string ext: ""
     //Check if file ends with tilde "~" and change the filetype accordingly
     property string fileType: /~$/.test(fileTitle) ? fileTitle.split(".").slice(-1)[0].slice(0, -1) :fileTitle.split(".").slice(-1)[0]
-     property DocumentHandler documentHandler: editorArea.documentHandler
+    property DocumentHandler documentHandler: editorArea.documentHandler
+    property alias topBar: topBar
     property alias background: background
     property alias myeditor: editorArea
     property alias drawer:drawer
@@ -308,6 +309,10 @@ Page {
 
                         TopBar {
                             id:topBar
+                            onFolderOpen: {
+                                busy.running=true
+                                fullFilePath = newPath
+                            }
                         }
                     }
                 }

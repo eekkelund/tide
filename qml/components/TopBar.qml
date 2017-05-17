@@ -6,6 +6,7 @@ Flipable {
     width: parent.width
     height: pgHead.height
     property bool flipped: false
+    signal folderOpen(string newPath)
 
     function searchActive(){
         if (!flipable.flipped){
@@ -35,9 +36,10 @@ Flipable {
             searchField.errorHighlight = true
         }
     }
-    function openEditor(chooserPath,pageReplace){
-        pageStack.replaceAbove(pageReplace,Qt.resolvedUrl("../pages/EditorPage.qml"),{fullFilePath: chooserPath})
-        pageStack.nextPage()
+    function openEditor(chooserPath, currentPage){
+        pageStack.pop(currentPage,{fullFilePath: chooserPath})
+        folderOpen(chooserPath)
+
     }
 
     transform: Rotation {
@@ -152,7 +154,7 @@ Flipable {
                     visible:!searchField.activeFocus && searchField.text.length<=0
                     onClicked: {
                         if(untitled){
-                            pageStack.push(dialog, {callback: saveAsNewFile,path:previousPath, showFolderList:true, noName:fileTitle/*, replacePage:pageStack.currentPage*/})
+                            pageStack.push(dialog, {callback: saveAsNewFile,path:previousPath, showFolderList:true, noName:fileTitle})
                         }else {
                             py.call('editFile.savings', [fullFilePath,myeditor.text], function(result) {
                                 fileTitle=result
@@ -167,7 +169,7 @@ Flipable {
                     enabled: !drawer.opened && !textChangedSave
                     onClicked:{
                         if(systemFM) {
-                            pageStack.push(Qt.resolvedUrl("../pages/FileManagerPage.qml"),{callback:flipable.openEditor,path:projectName?projectPath+"/"+projectName : homePath, replacablePage:pageStack.previousPage()})
+                            pageStack.push(Qt.resolvedUrl("../pages/FileManagerPage.qml"),{callback:flipable.openEditor,path:projectName?projectPath+"/"+projectName : homePath, currentPage: pageStack.currentPage})
                         } else {
                             lmodel.loadNew(previousPath)
                             drawer.open = true
