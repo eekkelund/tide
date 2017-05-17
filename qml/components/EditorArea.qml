@@ -108,7 +108,7 @@ TextArea {
         }
         if (text !== previousText)
         {
-            textChangedSave = true
+            textChangedSave =  (untitled ? myeditor.text.length > 0: true)
             if (textChangedManually)
             {
                 previousText = text

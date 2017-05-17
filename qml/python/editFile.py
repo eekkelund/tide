@@ -28,8 +28,7 @@ def untitledNumber(folderpath):
         if not os.path.exists(folderpath+"/"+"untitled"+str(i)):
             if not os.path.exists(folderpath+"/"+"untitled"+str(i)+"~"):
                 return "untitled"+str(i)
-        else:
-            return "Error, too many untitled files"
+    return "Error, too many untitled files"
 
 def saveAs(fileName,ext,path,text):
     file = open(path +"/"+ fileName + ext, 'a+', encoding = "utf-8")

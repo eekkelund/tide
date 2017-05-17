@@ -75,7 +75,7 @@ Page {
 
         }
         if((page.status !== PageStatus.Active) /*|| (myeditor.text.length > 0)*/){
-            if (autoSave&&textChangedAutoSave){
+            if (autoSave&&textChangedSave&&!untitled){
                 py.call('editFile.savings', [fullFilePath,myeditor.text], function(result) {
                     fileTitle=result
                 });
@@ -345,7 +345,7 @@ Page {
                     running: autoSave;
                     repeat: autoSave;
                     onTriggered: {
-                        if(textChangedAutoSave){
+                        if(textChangedAutoSave&&!untitled){
                             var tmpPath=fullFilePath?fullFilePath:StandardPaths.home+"/"+fileTitle.replace(/~$/, '');
                             py.call('editFile.autosave', [tmpPath,myeditor.text], function(result) {
                                 fileTitle=result
