@@ -365,10 +365,6 @@
         <translation>Tryck för att visa toppfält</translation>
     </message>
     <message>
-        <source>About &amp; Help</source>
-        <translation type="unfinished">Om &amp; Hjälp</translation>
-    </message>
-    <message>
         <source>New file</source>
         <translation type="unfinished"></translation>
     </message>
@@ -500,10 +496,6 @@
     <message>
         <source>Font</source>
         <translation>Teckensnitt</translation>
-    </message>
-    <message>
-        <source>Font size:</source>
-        <translation>Teckenstorlek:</translation>
     </message>
     <message>
         <source>Font:</source>
@@ -670,11 +662,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Show hidden files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>About &amp; Help</source>
+        <translation type="unfinished">Om &amp; Hjälp</translation>
+    </message>
+    <message>
         <source>Use system file manager in editor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Show hidden files</source>
+        <source>Font size</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

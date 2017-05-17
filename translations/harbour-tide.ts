@@ -403,6 +403,10 @@
         <source>No support for this file type..</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>This is autosaved file, open the regular one</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FirstPage</name>
