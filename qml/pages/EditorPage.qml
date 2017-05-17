@@ -187,12 +187,6 @@ Page {
                 enabled:!inSplitView
                 visible:enabled
                 MenuItem {
-                    enabled:editorMode
-                    visible:enabled
-                    text: qsTr("About & Help")
-                    onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
-                }
-                MenuItem {
                     enabled:!inSplitView
                     visible:enabled
                     text:  qsTr("New file")

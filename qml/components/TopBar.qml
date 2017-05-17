@@ -185,7 +185,7 @@ Flipable {
                 }
                 IconButton {
                     icon.source: "image://theme/icon-m-developer-mode"
-                    visible: !searchField.activeFocus && searchField.text.length<=0
+                    visible: !searchField.activeFocus && searchField.text.length<=0 && !inSplitView
                     enabled: visible
                     onClicked: {
                         pageStack.pushAttached(Qt.resolvedUrl("../pages/SettingsPage.qml"))

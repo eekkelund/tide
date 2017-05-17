@@ -55,6 +55,16 @@ Page {
         anchors.fill: parent
         contentHeight: column.height + Theme.paddingLarge
         VerticalScrollDecorator {}
+        PullDownMenu {
+            enabled:editorMode
+            visible:enabled
+            MenuItem {
+                enabled:editorMode
+                visible:enabled
+                text: qsTr("About & Help")
+                onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
+            }
+        }
         Column {
             id: column
             spacing: Theme.paddingMedium
@@ -75,14 +85,14 @@ Page {
                         rightMargin:Theme.paddingMedium
                         leftMargin:Theme.paddingMedium
                     }
-                    height: fontSize + Theme.itemSizeSmall
+                    height: Theme.itemSizeExtraLarge
                     wrapMode: appWindow.wrapMode
                     text: qsTr("This is example text how it would look like on editor")
                     color: focus ? textColor : Theme.primaryColor
                     font.pixelSize: fontSize
                     font.family: fontType
                     textMargin: 0
-                    textWidth: wrapMode !== Text.NoWrap ? width : Math.max(width, testTextField.implicitWidth)
+                    textWidth: wrapMode !== Text.NoWrap ? width : Math.max(width, editor.implicitWidth)
                     _flickableDirection: Flickable.HorizontalAndVerticalFlick
 
                 }
@@ -349,26 +359,28 @@ Page {
                 buttonHeight: Theme.itemSizeMedium
                 title: qsTr("Font")
                 content.sourceComponent: Column {
-                    ComboBox {
-                        id: fontBox
-                        label: qsTr("Font size:")
-
-                        value:appWindow.fontSize
-                        //currentIndex: appWindow.fontSize
+                    Slider {
+                        label: qsTr("Font size")
+                        width: parent.width
+                        minimumValue:0
+                        valueText: values[value][0]
+                        stepSize:1
+                        maximumValue: values.length-1
 
                         property variant values: [[qsTr("Tiny"), Theme.fontSizeTiny], [qsTr("ExtraSmall"), Theme.fontSizeExtraSmall], [qsTr("Small"), Theme.fontSizeSmall],[qsTr("Medium"), Theme.fontSizeMedium], [qsTr("Large"), Theme.fontSizeLarge], [qsTr("ExtraLarge"), Theme.fontSizeExtraLarge], [qsTr("Huge"), Theme.fontSizeHuge]]
 
-                        menu: ContextMenu {
-                            Repeater {
-                                model: fontBox.values.length
-                                MenuItem {
-                                    font.pixelSize:  fontBox.values[index][1]
-                                    text: fontBox.values[index][0]
-                                    onClicked: appWindow.fontSize = fontBox.values[index][1]
+                        onReleased: {
+                           appWindow.fontSize = values[value][1]
+                        }
+                        Component.onCompleted: {
+                            for (var i=0; i<values.length;i++){
+                                if(values[i][1]==appWindow.fontSize){
+                                    value=i
                                 }
                             }
                         }
                     }
+
                     ComboBox {
                         id: wrapModeBox
                         label: qsTr("Wrap mode:")
