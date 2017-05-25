@@ -446,10 +446,58 @@ Page {
                     }
                 }
             }
+            TextSwitch {
+                text: qsTr("Set as default text editor")
+                checked:defaultApp == app +".desktop"
+                description: qsTr("Unchecking will set Jolla-Notes as default text editor")
+                onCheckedChanged: {
+                    if(checked) {
+                        helper.defaultMime = app
+                    } else {
+                        helper.defaultMime="jolla-notes"
+                    }
+                    defaultApp = helper.defaultMime
+                }
+            }
+            Label {
+                visible: !rootMode
+                enabled: !rootMode
+                text: qsTr("WARNING")
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                    topMargin: Theme.paddingLarge
+                }
+                color:reverseColor(Theme.highlightColor)
+            }
+            Button{
+                visible: !rootMode
+                enabled: !rootMode
+                id:startAsRBtn
+                preferredWidth: Theme.buttonWidthLarge
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                    topMargin: 0
+                    bottomMargin: 0
+                }
+                color:reverseColor(Theme.highlightColor)
+                highlightBackgroundColor:reverseColor(Theme.highlightBackgroundColor)
+                text: qsTr("Start as Root")
+                onClicked: helper.setRoot(app)
+            }
+            Label {
+                visible: !rootMode
+                enabled: !rootMode
+                text: qsTr("Please be really carefull when/if editing system files.")
+                font.pixelSize: Theme.fontSizeSmall
+                anchors {
+                    left: startAsRBtn.left
+                    right: startAsRBtn.right
+                }
+                opacity: 0.7
+                color:reverseColor(Theme.highlightColor)
+                wrapMode: Text.Wrap
+            }
         }
-
-
     }
-
 }
 

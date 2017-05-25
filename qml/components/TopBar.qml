@@ -65,6 +65,7 @@ Flipable {
         width: parent.width
         anchors.right:parent.right
         title: fileTitle
+        _titleItem.color: rootMode ? reverseColor(Theme.highlightColor) :Theme.highlightColor
         visible: !flipable.flipped
         enabled: visible
         MouseArea {

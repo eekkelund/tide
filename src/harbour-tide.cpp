@@ -29,6 +29,7 @@
 #include "documenthandler.h"
 #include "iconprovider.h"
 #include "keyboardshortcut.h"
+#include "helper.h"
 
 
 int main(int argc, char *argv[])
@@ -37,6 +38,7 @@ int main(int argc, char *argv[])
     if (getuid()) root = false;
     else root = true;
     qmlRegisterType<DocumentHandler>("harbour.tide.editor.documenthandler", 1, 0, "DocumentHandler");
+    qmlRegisterType<Helper>("harbour.tide.editor.helper", 1, 0, "Helper");
     qmlRegisterType<KeyboardShortcut>("harbour.tide.editor.keyboardshortcut", 1, 0, "KeyboardShortcut");
     QGuiApplication *app = SailfishApp::application(argc, argv);
     app->setApplicationVersion(QString(APP_VERSION));

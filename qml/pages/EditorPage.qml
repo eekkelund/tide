@@ -297,10 +297,9 @@ Page {
                         width: parent.width
                         height: parent.height
                         gradient: Gradient {
-                            GradientStop { position: 0.0; color: Theme.rgba(Theme.highlightBackgroundColor, 0.15) }
+                            GradientStop { position: 0.0; color: Theme.rgba(rootMode ? reverseColor(Theme.highlightBackgroundColor) :Theme.highlightBackgroundColor, 0.15) }
                             GradientStop { position: 1.0; color: Theme.rgba("transparent", 0.3) }
                         }
-
                         TopBar {
                             id:topBar
                             onFolderOpen: {

@@ -18,6 +18,7 @@ import QtQuick 2.2
 import Sailfish.Silica 1.0
 import io.thp.pyotherside 1.3
 import org.nemomobile.notifications 1.0
+import harbour.tide.editor.helper 1.0
 import "pages"
 
 
@@ -40,6 +41,7 @@ ApplicationWindow
     property bool rootMode: root
     property string app: appName
     property bool editorMode: app==="harbour-tide-editor"
+    property string defaultApp: helper.defaultMime
 
     Notification{
         id:notification
@@ -57,6 +59,10 @@ ApplicationWindow
             light = 3.0;
 
         return Qt.lighter(Qt.rgba(1.0 - color.r, 1.0 - color.g, 1.0 - color.b, 1.0), light);
+    }
+
+    Helper {
+        id:helper
     }
 
     //Settings
@@ -130,7 +136,16 @@ ApplicationWindow
                         if (result=="True") darkTheme=true
                         else darkTheme=false
                     });
-                    py.call('settings.get', ['hint'], function(result) {hint=result});
+                    py.call('settings.get', ['hint'], function(result) {
+                        hint=result
+                        //Hackedyhack
+                        if(hint < 2){
+                            if(defaultApp != app +".desktop") {
+                                helper.defaultMime =app
+                                defaultApp = helper.defaultMime
+                            }
+                        }
+                    });
                     py.call('settings.get', ['fontsize'], function(result) {fontSize=result});
                     py.call('settings.get', ['fonttype'], function(result) {fontType=result});
                     py.call('settings.get', ['linenums'], function(result) {

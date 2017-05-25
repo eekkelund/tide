@@ -20,6 +20,7 @@ import Sailfish.Silica 1.0
 
 Page {
     id: page
+    property string ghUrl: editorMode ? "https://github.com/eekkelund/harbour-tIDEditor" : "https://github.com/eekkelund/harbour-tIDE"
     SilicaFlickable {
         anchors.fill: parent
         contentHeight: column.height + Theme.paddingLarge
@@ -32,12 +33,12 @@ Page {
             }
             MenuItem {
                 text: qsTr("GitHub")
-                onClicked: Qt.openUrlExternally("https://github.com/eekkelund/harbour-tIDE")
+                onClicked: Qt.openUrlExternally(ghUrl)
             }
 
             MenuItem {
                 text: qsTr("Report an issue")
-                onClicked: Qt.openUrlExternally("https://github.com/eekkelund/harbour-tIDE/issues")
+                onClicked: Qt.openUrlExternally(ghUrl + "/issues")
             }
         }
 
@@ -156,10 +157,10 @@ Page {
                         }
                         font.pixelSize: Theme.fontSizeSmall
                         color: Theme.highlightColor
-                        text:qsTr("Line numbers") + "\n"+ qsTr("Autosave") + "\n" +qsTr("Themes") + "\n" +qsTr("Font settings") + "\n" +qsTr("Indentation") + "\n"+ qsTr("Redo/Undo") + "\n"+ qsTr("Search") + "\n"+ qsTr("Launch from terminal (harbour-tide /path/to/file.txt)")+ "\n"+ qsTr("Change files on the fly")+ "\n"+ qsTr("Split view. And possibility to move separator")
+                        text:qsTr("Line numbers") + "\n"+ qsTr("Autosave") + "\n" +qsTr("Themes") + "\n" +qsTr("Font settings") + "\n" +qsTr("Indentation") + "\n"+ qsTr("Redo/Undo") + "\n"+ qsTr("Search") + "\n"+ qsTr("Launch from terminal (") + app + " /path/to/file.txt)"+ "\n"+ qsTr("Change files on the fly")+ "\n"+ qsTr("Split view. And possibility to move separator")
                     }
                     Label {
-                        enabled: !editorMode
+                        //enabled: !editorMode
                         visible: enabled
                         width: parent.width
                         wrapMode: Text.WordWrap
@@ -175,7 +176,7 @@ Page {
                         text: qsTr("Root mode features:")
                     }
                     Label {
-                        enabled: !editorMode
+                        //enabled: !editorMode
                         visible: enabled
                         width: parent.width
                         wrapMode: Text.WordWrap

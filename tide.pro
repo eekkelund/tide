@@ -8,7 +8,8 @@ SOURCES += src/harbour-tide.cpp \
     src/realhighlighter.cpp \
     src/documenthandler.cpp \
     src/iconprovider.cpp \
-    src/keyboardshortcut.cpp
+    src/keyboardshortcut.cpp \
+    src/helper.cpp
 
 OTHER_FILES += qml/harbour-tide.qml \
     qml/cover/CoverPage.qml \
@@ -54,7 +55,8 @@ HEADERS += \
     src/realhighlighter.h \
     src/documenthandler.h \
     src/iconprovider.h \
-    src/keyboardshortcut.h
+    src/keyboardshortcut.h \
+    src/helper.h
 
 RESOURCES += \
     src/dictionarys.qrc
