@@ -1,4 +1,4 @@
-TARGET = harbour-tide
+ TARGET=$${NAME}
 
 CONFIG += sailfishapp
 
@@ -23,8 +23,7 @@ OTHER_FILES += qml/harbour-tide.qml \
     qml/pages/MainPage.qml \
     qml/pages/FileManagerPage.qml \
     qml/pages/SettingsPage.qml \
-    translations/*.ts \
-    harbour-tide.desktop
+    translations/*.ts
 
 SAILFISHAPP_ICONS = 86x86 108x108 128x128 256x256
 
@@ -60,5 +59,3 @@ HEADERS += \
 
 RESOURCES += \
     src/dictionarys.qrc
-
-INCLUDEPATH += $$PWD
