@@ -73,7 +73,8 @@ Page {
         id: line
         height: parent.height
         width: Theme.paddingSmall
-        color: Theme.highlightDimmerColor
+        color: Theme.highlightBackgroundColor
+        opacity: 0.7
         x: parent.width/2
         Drag.active: mouseArea.drag.active
         property point beginDrag

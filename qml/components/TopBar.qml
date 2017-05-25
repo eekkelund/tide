@@ -194,7 +194,7 @@ Flipable {
                     }
                 }
                 IconButton {
-                    icon.source: "image://theme/icon-m-close"
+                    icon.source: "image://theme/icon-m-page-up"
                     visible:!searchField.activeFocus && searchField.text.length<=0
                     onClicked:{
                         flipable.flipped = false

@@ -370,7 +370,7 @@ Page {
                         property variant values: [[qsTr("Tiny"), Theme.fontSizeTiny], [qsTr("ExtraSmall"), Theme.fontSizeExtraSmall], [qsTr("Small"), Theme.fontSizeSmall],[qsTr("Medium"), Theme.fontSizeMedium], [qsTr("Large"), Theme.fontSizeLarge], [qsTr("ExtraLarge"), Theme.fontSizeExtraLarge], [qsTr("Huge"), Theme.fontSizeHuge]]
 
                         onReleased: {
-                           appWindow.fontSize = values[value][1]
+                            appWindow.fontSize = values[value][1]
                         }
                         Component.onCompleted: {
                             for (var i=0; i<values.length;i++){

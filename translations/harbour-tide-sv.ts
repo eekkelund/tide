@@ -152,10 +152,6 @@
         <translation>och SaberAltria&apos;s</translation>
     </message>
     <message>
-        <source>Launch from terminal (harbour-tide /path/to/file.txt)</source>
-        <translation>Starta från terminal (harbour-tide /sökväg/till/fil.txt)</translation>
-    </message>
-    <message>
         <source>Projects are located at:</source>
         <translation>Projekt lagras i:</translation>
     </message>
@@ -238,6 +234,10 @@
     <message>
         <source>Line numbers</source>
         <translation>Radnummer</translation>
+    </message>
+    <message>
+        <source>Launch from terminal (</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -675,6 +675,26 @@
     </message>
     <message>
         <source>Font size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set as default text editor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unchecking will set Jolla-Notes as default text editor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WARNING</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start as Root</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please be really carefull when/if editing system files.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -4,13 +4,13 @@
 <context>
     <name></name>
     <message id="filemanager-la-file_details">
-        <location filename="../qml/pages/FileManagerPage.qml" line="161"/>
+        <location filename="../qml/pages/FileManagerPage.qml" line="160"/>
         <source>%1, %2</source>
         <extracomment>Shows size and modification date, e.g. &quot;15.5MB, 02/03/2016&quot;</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message id="filemanager-la-no_files">
-        <location filename="../qml/pages/FileManagerPage.qml" line="190"/>
+        <location filename="../qml/pages/FileManagerPage.qml" line="189"/>
         <source>No files</source>
         <translation type="unfinished"></translation>
     </message>
@@ -18,278 +18,278 @@
 <context>
     <name>AboutPage</name>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="30"/>
+        <location filename="../qml/pages/AboutPage.qml" line="31"/>
         <source>License: GPLv3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="34"/>
+        <location filename="../qml/pages/AboutPage.qml" line="35"/>
         <source>GitHub</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="39"/>
+        <location filename="../qml/pages/AboutPage.qml" line="40"/>
         <source>Report an issue</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="50"/>
+        <location filename="../qml/pages/AboutPage.qml" line="51"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="84"/>
+        <location filename="../qml/pages/AboutPage.qml" line="85"/>
         <source>transportable IDE for SailfishOS devices.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="84"/>
+        <location filename="../qml/pages/AboutPage.qml" line="85"/>
         <source>The Editor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="96"/>
+        <location filename="../qml/pages/AboutPage.qml" line="97"/>
         <source>Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="101"/>
+        <location filename="../qml/pages/AboutPage.qml" line="102"/>
         <source>Features</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="117"/>
+        <location filename="../qml/pages/AboutPage.qml" line="118"/>
         <source>Basic IDE features:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="132"/>
+        <location filename="../qml/pages/AboutPage.qml" line="133"/>
         <source>Syntax highlighting (QML, JS &amp; Python)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="132"/>
+        <location filename="../qml/pages/AboutPage.qml" line="133"/>
         <source>Project template creation for SailfishOS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="132"/>
+        <location filename="../qml/pages/AboutPage.qml" line="133"/>
         <source>Autocomplete (Installs new keyboard)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="132"/>
+        <location filename="../qml/pages/AboutPage.qml" line="133"/>
         <source>Running your application</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="132"/>
+        <location filename="../qml/pages/AboutPage.qml" line="133"/>
         <source>Application output &amp; debug log</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="132"/>
+        <location filename="../qml/pages/AboutPage.qml" line="133"/>
         <source>Building a RPM(experimental)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="132"/>
+        <location filename="../qml/pages/AboutPage.qml" line="133"/>
         <source>Predictive text (QML, JS &amp; Python)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="132"/>
+        <location filename="../qml/pages/AboutPage.qml" line="133"/>
         <source>Installing built RPM</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="146"/>
+        <location filename="../qml/pages/AboutPage.qml" line="147"/>
         <source>Normal text editor features including:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="159"/>
+        <location filename="../qml/pages/AboutPage.qml" line="160"/>
         <source>Autosave</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="159"/>
+        <location filename="../qml/pages/AboutPage.qml" line="160"/>
         <source>Themes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="159"/>
+        <location filename="../qml/pages/AboutPage.qml" line="160"/>
         <source>Font settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="159"/>
+        <location filename="../qml/pages/AboutPage.qml" line="160"/>
         <source>Indentation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="159"/>
+        <location filename="../qml/pages/AboutPage.qml" line="160"/>
         <source>Redo/Undo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="159"/>
+        <location filename="../qml/pages/AboutPage.qml" line="160"/>
         <source>Search</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="159"/>
-        <source>Launch from terminal (harbour-tide /path/to/file.txt)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/AboutPage.qml" line="159"/>
+        <location filename="../qml/pages/AboutPage.qml" line="160"/>
         <source>Change files on the fly</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="159"/>
+        <location filename="../qml/pages/AboutPage.qml" line="160"/>
         <source>Split view. And possibility to move separator</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="159"/>
+        <location filename="../qml/pages/AboutPage.qml" line="160"/>
         <source>Line numbers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="175"/>
+        <location filename="../qml/pages/AboutPage.qml" line="160"/>
+        <source>Launch from terminal (</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="176"/>
         <source>Root mode features:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="190"/>
+        <location filename="../qml/pages/AboutPage.qml" line="191"/>
         <source>Edit UI, app or system files. You name it!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="190"/>
+        <location filename="../qml/pages/AboutPage.qml" line="191"/>
         <source>Possibility to run applications in /usr/share</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="206"/>
+        <location filename="../qml/pages/AboutPage.qml" line="207"/>
         <source>Keyboard:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="221"/>
+        <location filename="../qml/pages/AboutPage.qml" line="222"/>
         <source>Predictive text depending on what file opened</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="221"/>
+        <location filename="../qml/pages/AboutPage.qml" line="222"/>
         <source>Tabulator button on Sym view</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="221"/>
+        <location filename="../qml/pages/AboutPage.qml" line="222"/>
         <source>Arrow keys</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="221"/>
+        <location filename="../qml/pages/AboutPage.qml" line="222"/>
         <source>Basic hardware support including common shortcuts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="229"/>
+        <location filename="../qml/pages/AboutPage.qml" line="230"/>
         <source>Instructions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="242"/>
+        <location filename="../qml/pages/AboutPage.qml" line="243"/>
         <source>New keyboard is activated from: Settings - Text input - Keyboards - Develop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="255"/>
+        <location filename="../qml/pages/AboutPage.qml" line="256"/>
         <source>Built RPM&apos;s are located at:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="268"/>
+        <location filename="../qml/pages/AboutPage.qml" line="269"/>
         <source>Projects are located at:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="274"/>
-        <location filename="../qml/pages/AboutPage.qml" line="295"/>
+        <location filename="../qml/pages/AboutPage.qml" line="275"/>
+        <location filename="../qml/pages/AboutPage.qml" line="296"/>
         <source>Contributors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="277"/>
+        <location filename="../qml/pages/AboutPage.qml" line="278"/>
         <source>Developer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="309"/>
+        <location filename="../qml/pages/AboutPage.qml" line="310"/>
         <source>Project deleting, wrap mode setting for the editor, Python bug fixes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="324"/>
+        <location filename="../qml/pages/AboutPage.qml" line="325"/>
         <source>Start as root script</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="328"/>
+        <location filename="../qml/pages/AboutPage.qml" line="329"/>
         <source>Translations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="342"/>
+        <location filename="../qml/pages/AboutPage.qml" line="343"/>
         <source>Swedish</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="357"/>
+        <location filename="../qml/pages/AboutPage.qml" line="358"/>
         <source>Dutch</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="372"/>
+        <location filename="../qml/pages/AboutPage.qml" line="373"/>
         <source>Thank you! :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="376"/>
+        <location filename="../qml/pages/AboutPage.qml" line="377"/>
         <source>Credits</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="390"/>
+        <location filename="../qml/pages/AboutPage.qml" line="391"/>
         <source>Base of the keyboard: Jolla&apos;s</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="390"/>
+        <location filename="../qml/pages/AboutPage.qml" line="391"/>
         <source>and SaberAltria&apos;s</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="405"/>
+        <location filename="../qml/pages/AboutPage.qml" line="406"/>
         <source>Some highlighting rules and indentation:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="421"/>
+        <location filename="../qml/pages/AboutPage.qml" line="422"/>
         <source>SettingsPage slider:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="437"/>
+        <location filename="../qml/pages/AboutPage.qml" line="438"/>
         <source>Icon:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="452"/>
+        <location filename="../qml/pages/AboutPage.qml" line="453"/>
         <source>Dedicated to</source>
         <translation type="unfinished"></translation>
     </message>
@@ -441,17 +441,17 @@
 <context>
     <name>EditorPage</name>
     <message>
-        <location filename="../qml/pages/EditorPage.qml" line="194"/>
+        <location filename="../qml/pages/EditorPage.qml" line="192"/>
         <source>New file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/EditorPage.qml" line="203"/>
+        <location filename="../qml/pages/EditorPage.qml" line="201"/>
         <source>Open file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/EditorPage.qml" line="283"/>
+        <location filename="../qml/pages/EditorPage.qml" line="281"/>
         <source>Tap to show top bar</source>
         <translation type="unfinished"></translation>
     </message>
@@ -459,37 +459,37 @@
 <context>
     <name>FileManagerPage</name>
     <message>
-        <location filename="../qml/pages/FileManagerPage.qml" line="58"/>
+        <location filename="../qml/pages/FileManagerPage.qml" line="57"/>
         <source>Go /usr/share</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FileManagerPage.qml" line="58"/>
+        <location filename="../qml/pages/FileManagerPage.qml" line="57"/>
         <source>Go to root</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FileManagerPage.qml" line="64"/>
+        <location filename="../qml/pages/FileManagerPage.qml" line="63"/>
         <source>Go to home</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FileManagerPage.qml" line="64"/>
+        <location filename="../qml/pages/FileManagerPage.qml" line="63"/>
         <source>Go SD Card</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FileManagerPage.qml" line="69"/>
+        <location filename="../qml/pages/FileManagerPage.qml" line="68"/>
         <source>Add file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FileManagerPage.qml" line="175"/>
+        <location filename="../qml/pages/FileManagerPage.qml" line="174"/>
         <source>This is autosaved file, open the regular one</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FileManagerPage.qml" line="177"/>
+        <location filename="../qml/pages/FileManagerPage.qml" line="176"/>
         <source>No support for this file type..</source>
         <translation type="unfinished"></translation>
     </message>
@@ -743,6 +743,31 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="450"/>
+        <source>Set as default text editor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="452"/>
+        <source>Unchecking will set Jolla-Notes as default text editor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="465"/>
+        <source>WARNING</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="484"/>
+        <source>Start as Root</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="490"/>
+        <source>Please be really carefull when/if editing system files.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/pages/SettingsPage.qml" line="90"/>
         <source>This is example text how it would look like on editor</source>
         <translation type="unfinished"></translation>
@@ -836,7 +861,7 @@
 <context>
     <name>TopBar</name>
     <message>
-        <location filename="../qml/components/TopBar.qml" line="104"/>
+        <location filename="../qml/components/TopBar.qml" line="101"/>
         <source>Search</source>
         <translation type="unfinished"></translation>
     </message>

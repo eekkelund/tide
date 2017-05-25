@@ -152,10 +152,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Launch from terminal (harbour-tide /path/to/file.txt)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Projects are located at:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -237,6 +233,10 @@
     </message>
     <message>
         <source>Line numbers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Launch from terminal (</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -372,10 +372,6 @@
         <source>New file</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>About &amp; Help</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>FileManagerPage</name>
@@ -499,10 +495,6 @@
     </message>
     <message>
         <source>Font</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Font size:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -675,6 +667,34 @@
     </message>
     <message>
         <source>Show hidden files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>About &amp; Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Font size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set as default text editor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unchecking will set Jolla-Notes as default text editor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WARNING</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start as Root</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please be really carefull when/if editing system files.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
