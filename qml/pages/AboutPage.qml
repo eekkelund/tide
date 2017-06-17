@@ -160,7 +160,7 @@ Page {
                         text:qsTr("Line numbers") + "\n"+ qsTr("Autosave") + "\n" +qsTr("Themes") + "\n" +qsTr("Font settings") + "\n" +qsTr("Indentation") + "\n"+ qsTr("Redo/Undo") + "\n"+ qsTr("Search") + "\n"+ qsTr("Launch from terminal (") + app + " /path/to/file.txt)"+ "\n"+ qsTr("Change files on the fly")+ "\n"+ qsTr("Split view. And possibility to move separator")
                     }
                     Label {
-                        //enabled: !editorMode
+                        enabled: !editorMode
                         visible: enabled
                         width: parent.width
                         wrapMode: Text.WordWrap
@@ -176,7 +176,7 @@ Page {
                         text: qsTr("Root mode features:")
                     }
                     Label {
-                        //enabled: !editorMode
+                        enabled: !editorMode
                         visible: enabled
                         width: parent.width
                         wrapMode: Text.WordWrap

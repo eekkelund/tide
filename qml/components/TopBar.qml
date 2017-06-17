@@ -6,6 +6,11 @@ Flipable {
     width: parent.width
     height: pgHead.height
     property bool flipped: false
+    property int foundStart
+    property int foundEnd
+    property int foundMatches: -1
+    property alias searchField: searchField
+    property bool replaceFieldClosed
     signal folderOpen(string newPath)
 
     function searchActive(){
@@ -16,25 +21,38 @@ Flipable {
     }
 
     function search(text, position, direction) {
-        //var reg = new RegExp(text, "ig")
-        text= text.toLowerCase()
-        var myText = myeditor.text.toLowerCase()
-        var match = myText.match(text)
+        var reg = new RegExp(text, "ig")
+        text= text//.toLowerCase()
+        var myText = myeditor.text//.toLowerCase()
+        var match = myText.match(reg)
         if(highlight) documentHandler.setDictionary(fileType);
         if(highlight) documentHandler.searchHighlight(text)
         if(match){
+            foundMatches=match.length
             if(direction=="back"){
                 myeditor.cursorPosition = myText.lastIndexOf(match[match.length-1], position)
-                if(myText.lastIndexOf(match[match.length-1], position) != -1) myeditor.select(myeditor.cursorPosition,myeditor.cursorPosition+text.length)
+                if(myText.lastIndexOf(match[match.length-1], position) != -1){
+                    myeditor.select(myeditor.cursorPosition,myeditor.cursorPosition+text.length)
+                    flipable.foundEnd = myeditor.cursorPosition
+                    flipable.foundStart = myeditor.cursorPosition-text.length
+                }
             }else{
                 myeditor.cursorPosition = myText.indexOf(match[0],position)
-                if (myText.indexOf(match[0],position)!=-1) myeditor.select(myeditor.cursorPosition,myeditor.cursorPosition+text.length)
+                if (myText.indexOf(match[0],position)!=-1){
+                    myeditor.select(myeditor.cursorPosition,myeditor.cursorPosition+text.length)
+                    flipable.foundEnd = myeditor.cursorPosition
+                    flipable.foundStart = myeditor.cursorPosition-text.length
+                }
             }
             f.time=3
             myeditor.forceActiveFocus()
         }else{
+            foundMatches=0
             searchField.errorHighlight = true
+            flipable.foundStart = -1
+            flipable.foundEnd = -1
         }
+        replaceFieldClosed=false
     }
     function openEditor(chooserPath, currentPage){
         pageStack.pop(currentPage,{fullFilePath: chooserPath})
@@ -79,7 +97,7 @@ Flipable {
 
     back: Item{
         anchors.verticalCenter: parent.verticalCenter
-        anchors.horizontalCenter: parent.horizontalCenter
+        //anchors.horizontalCenter: parent.horizontalCenter
         width: parent.width
         height: parent.height
         clip:true
@@ -97,13 +115,24 @@ Flipable {
 
                 SearchField{
                     id:searchField
-                    width: (activeFocus || text.length>0) ? pgHead.width -previous.width*2: implicitWidth*1.5
+                    width: (activeFocus || text.length>0 || replaceField.focus) ? pgHead.width -previous.width*3: implicitWidth*1.5
                     placeholderText: qsTr("Search")
                     EnterKey.iconSource: "image://theme/icon-m-enter-next"
                     EnterKey.onClicked:{
                         flipable.search(text,myeditor.cursorPosition,"forward");
                         searched=true
                     }
+                    onActiveFocusChanged: {
+                        if(activeFocus && !replaceFieldClosed) {
+                            replaceBar.height=pgHead.height
+                        }
+                        else if (!activeFocus && text.length<1 && replaceBar.height>1 && !replaceField.activeFocus) {
+                            replaceBar.height=0
+                            flipable.foundStart = -1
+                            flipable.foundEnd = -1
+                        }
+                    }
+
                     onTextChanged: {
                         if(shortcutUsed){
                             shortcutUsed=false
@@ -114,8 +143,11 @@ Flipable {
                         if(text==""){
                             if(highlight) documentHandler.setDictionary(fileType)
                         }
+                        if(foundMatches>-1) foundMatches=-1
                         errorHighlight = false
                         searched = false
+                        flipable.foundStart = -1
+                        flipable.foundEnd = -1
                     }
                 }
 
@@ -126,7 +158,25 @@ Flipable {
                     onClicked:{
                         flipable.search(searchField.text,myeditor.cursorPosition-searchField.text.length-1,"back");
                     }
-                    visible:searchField.activeFocus || searchField.text.length>0
+                    visible:searchField.activeFocus || searchField.text.length>0 || replaceField.focus
+                }
+                IconButton {
+                    id:searchBtn
+                    icon.source: "image://theme/icon-m-search"
+                    enabled: searchField.text.length>0
+                    onClicked:{
+                        flipable.search(searchField.text,myeditor.cursorPosition-(searchField.text.length-1),"forward");
+                         searched=true
+                    }
+                    visible:searchField.activeFocus || searchField.text.length>0 || replaceField.focus
+                    Label {
+                        id:searchMatches
+                        color: foundMatches > 0 ? Theme.primaryColor : "#ff4d4d"
+                        text: foundMatches > -1 ? foundMatches : ""
+                        x: parent.width/2-Theme.paddingMedium
+                        y:parent.height/2-Theme.paddingLarge
+                        z:10
+                    }
                 }
                 IconButton {
                     id:next
@@ -135,24 +185,24 @@ Flipable {
                     onClicked:{
                         flipable.search(searchField.text,myeditor.cursorPosition-(searchField.text.length-1),"forward");
                     }
-                    visible:searchField.activeFocus || searchField.text.length>0
+                    visible:searchField.activeFocus || searchField.text.length>0 || replaceField.focus
                 }
                 IconButton {
                     icon.source: "image://theme/icon-m-rotate-left"
                     enabled: myeditor._editor.canUndo
                     onClicked: myeditor._editor.undo()
-                    visible:!searchField.activeFocus && searchField.text.length<=0
+                    visible:!searchField.activeFocus && searchField.text.length<=0 && !replaceField.focus
                 }
                 IconButton {
                     icon.source: "image://theme/icon-m-rotate-right"
                     enabled: myeditor._editor.canRedo
                     onClicked: myeditor._editor.redo()
-                    visible:!searchField.activeFocus && searchField.text.length<=0
+                    visible:!searchField.activeFocus && searchField.text.length<=0 && !replaceField.focus
                 }
                 IconButton {
                     icon.source: untitled?"image://ownIcons/icon-m-save-as":"image://ownIcons/icon-m-save"
                     enabled: textChangedSave
-                    visible:!searchField.activeFocus && searchField.text.length<=0
+                    visible:!searchField.activeFocus && searchField.text.length<=0 && !replaceField.focus
                     onClicked: {
                         if(untitled){
                             pageStack.push(dialog, {callback: saveAsNewFile,path:previousPath, showFolderList:true, noName:fileTitle})
@@ -166,7 +216,7 @@ Flipable {
                 }
                 IconButton {
                     icon.source: "image://theme/icon-m-folder"
-                    visible:!searchField.activeFocus && searchField.text.length<=0
+                    visible:!searchField.activeFocus && searchField.text.length<=0 && !replaceField.focus
                     enabled: !drawer.opened && !textChangedSave
                     onClicked:{
                         if(systemFM) {
@@ -180,13 +230,13 @@ Flipable {
                 }
                 IconButton {
                     icon.source: "image://theme/icon-m-flip"
-                    visible: !inSplitView /*&& Screen.sizeCategory === Screen.Large*/ && !searchField.activeFocus && searchField.text.length<=0
+                    visible: !inSplitView /*&& Screen.sizeCategory === Screen.Large*/ && !searchField.activeFocus && searchField.text.length<=0 && !replaceField.focus
                     enabled: visible && !textChangedSave
                     onClicked:editorMode ? pageStack.push(Qt.resolvedUrl("../pages/SplitPage.qml"),{fullFilePath: fullFilePath},PageStackAction.Immediate) : pageStack.replace(Qt.resolvedUrl("../pages/SplitPage.qml"),{fullFilePath: fullFilePath},PageStackAction.Immediate)
                 }
                 IconButton {
                     icon.source: "image://theme/icon-m-developer-mode"
-                    visible: !searchField.activeFocus && searchField.text.length<=0 && !inSplitView
+                    visible: !searchField.activeFocus && searchField.text.length<=0 && !inSplitView && !replaceField.focus
                     enabled: visible
                     onClicked: {
                         pageStack.pushAttached(Qt.resolvedUrl("../pages/SettingsPage.qml"))
@@ -195,7 +245,7 @@ Flipable {
                 }
                 IconButton {
                     icon.source: "image://theme/icon-m-page-up"
-                    visible:!searchField.activeFocus && searchField.text.length<=0
+                    visible:!searchField.activeFocus && searchField.text.length<=0 && !replaceField.focus
                     onClicked:{
                         flipable.flipped = false
                     }

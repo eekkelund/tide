@@ -256,6 +256,7 @@ Page {
                 height: headerColumn.height
                 width: parent.width
                 enabled: !drawer.opened
+                //height: contentHeight
 
                 //wait that hint property is loaded
                 Timer {
@@ -290,7 +291,9 @@ Page {
                     id:headerColumn
                     width: parent.width
                     spacing: Theme.paddingSmall
-                    height: topBar.height
+                    height: topBar.height + replaceBar.height
+                    visible: hdr.height>=topBar.height
+                    onHeightChanged: hdr.height = height
 
                     Rectangle {
                         id: headerRec
@@ -307,8 +310,71 @@ Page {
                                 fullFilePath = newPath
                             }
                         }
+                        Item{
+                            id:replaceBar
+                            anchors.top:topBar.bottom
+                            //anchors.verticalCenter: parent.verticalCenter
+                            // anchors.horizontalCenter: parent.horizontalCenter
+                            width: parent.width
+                            height: 0
+                            visible: height == topBar.height
+                            enabled: height == topBar.height
+                            Flow {
+                                id:menu
+                                height: parent.height
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                width:parent.width
+                                TextField {
+                                    height: parent.height
+                                    id:replaceField
+                                    width:parent.width-closeReplace.height*2
+                                    placeholderText: qsTr("Replace")
+                                    EnterKey.iconSource: "image://theme/icon-m-enter-next"
+                                    EnterKey.onClicked: {
+                                        if(topBar.foundEnd-topBar.foundStart>0 && replaceField.text.length>0) {
+                                            replaceField.selectAll()
+                                            replaceField.copy()
+                                            myeditor.select(topBar.foundStart,topBar.foundEnd)
+                                            myeditor.paste()
+                                            topBar.foundStart=-1
+                                            topBar.foundEnd = -1
+                                        }
+                                    }
+                                }
+
+                                IconButton {
+                                    id:replaceBtn
+                                    icon.source: "image://theme/icon-m-acknowledge"
+                                    visible:parent.visible
+                                    enabled: replaceField.text.length>0
+                                    onClicked:{
+                                        if(topBar.foundEnd-topBar.foundStart>0 && replaceField.text.length>0) {
+                                            replaceField.selectAll()
+                                            replaceField.copy()
+                                            myeditor.select(topBar.foundStart,topBar.foundEnd)
+                                            myeditor.paste()
+                                            topBar.foundStart=-1
+                                            topBar.foundEnd = -1
+                                        }
+                                    }
+                                }
+                                IconButton {
+                                    id:closeReplace
+                                    icon.source: "image://theme/icon-m-page-up"
+                                    visible:parent.visible
+                                    onClicked:{
+                                        replaceField.text=""
+                                        topBar.replaceFieldClosed=true
+                                        if (!topBar.searchField.activeFocus) topBar.searchField.forceActiveFocus()
+                                        replaceBar.height = 0
+                                    }
+                                }
+                            }
+                            Behavior on height { PropertyAnimation {duration:150} }
+                        }
                     }
                 }
+                Behavior on height { PropertyAnimation {duration:150} }
             }
             SilicaFlickable {
                 id:f
@@ -356,16 +422,17 @@ Page {
 
                 onContentYChanged: {
                     if (contentY-startY > 200 && time < 2 ) {
-                        hdr.visible=false
-                        f.anchors.top = background.top
+                        //hdr.visible=false
+                        //f.anchors.top = background.top
+                        hdr.height=0
                     }
                     if (startY-contentY > 200 && time < 2 ) {
-                        hdr.visible=true
-                        f.anchors.top = hdr.bottom
+                        //hdr.visible=true
+                        //f.anchors.top = hdr.bottom
+                        hdr.height=headerColumn.height
                     }
                     if (contentY<100){
-                        hdr.visible=true
-                        f.anchors.top = hdr.bottom
+                        hdr.height=headerColumn.height
                     }
                 }
 

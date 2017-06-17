@@ -451,8 +451,13 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/EditorPage.qml" line="281"/>
+        <location filename="../qml/pages/EditorPage.qml" line="282"/>
         <source>Tap to show top bar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/EditorPage.qml" line="331"/>
+        <source>Replace</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -753,21 +758,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="465"/>
-        <source>WARNING</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="484"/>
-        <source>Start as Root</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="490"/>
-        <source>Please be really carefull when/if editing system files.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../qml/pages/SettingsPage.qml" line="90"/>
         <source>This is example text how it would look like on editor</source>
         <translation type="unfinished"></translation>
@@ -861,7 +851,7 @@
 <context>
     <name>TopBar</name>
     <message>
-        <location filename="../qml/components/TopBar.qml" line="101"/>
+        <location filename="../qml/components/TopBar.qml" line="119"/>
         <source>Search</source>
         <translation type="unfinished"></translation>
     </message>

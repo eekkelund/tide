@@ -361,16 +361,28 @@
 <context>
     <name>EditorPage</name>
     <message>
-        <source>Tap to show top bar</source>
-        <translation>Tryck för att visa toppfält</translation>
-    </message>
-    <message>
         <source>New file</source>
         <translation>Ny fil</translation>
     </message>
     <message>
         <source>Open file</source>
         <translation>Öppna fil</translation>
+    </message>
+    <message>
+        <source>Tap to show top bar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Replace</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tap to show top bar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Replace</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -361,15 +361,19 @@
 <context>
     <name>EditorPage</name>
     <message>
-        <source>Tap to show top bar</source>
-        <translation>Tik om de bovenste balk weer te geven</translation>
-    </message>
-    <message>
         <source>New file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Open file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tap to show top bar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Replace</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -683,18 +687,6 @@
     </message>
     <message>
         <source>Unchecking will set Jolla-Notes as default text editor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>WARNING</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Start as Root</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Please be really carefull when/if editing system files.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

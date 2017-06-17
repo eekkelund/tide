@@ -1,4 +1,4 @@
- TARGET=$${NAME}
+TARGET=$${NAME}
 
 CONFIG += sailfishapp
 

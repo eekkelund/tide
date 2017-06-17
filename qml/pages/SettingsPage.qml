@@ -459,7 +459,8 @@ Page {
                     defaultApp = helper.defaultMime
                 }
             }
-            Label {
+            //Harbour QA
+            /*Label {
                 visible: !rootMode
                 enabled: !rootMode
                 text: qsTr("WARNING")
@@ -496,7 +497,7 @@ Page {
                 opacity: 0.7
                 color:reverseColor(Theme.highlightColor)
                 wrapMode: Text.Wrap
-            }
+            }*/
         }
     }
 }

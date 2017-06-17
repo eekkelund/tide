@@ -372,6 +372,10 @@
         <source>New file</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Replace</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FileManagerPage</name>
