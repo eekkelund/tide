@@ -237,7 +237,7 @@
     </message>
     <message>
         <source>Launch from terminal (</source>
-        <translation type="unfinished">Starta från Terminal</translation>
+        <translation>Starta från Terminal (</translation>
     </message>
 </context>
 <context>
