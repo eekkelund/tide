@@ -237,30 +237,30 @@
     </message>
     <message>
         <source>Launch from terminal (</source>
-        <translation type="unfinished"></translation>
+        <translation>Starta från Terminal (</translation>
     </message>
 </context>
 <context>
     <name>AddFileDialog</name>
     <message>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till</translation>
     </message>
     <message>
         <source>Name of the file</source>
-        <translation type="unfinished"></translation>
+        <translation>Filnamn</translation>
     </message>
     <message>
         <source>Filetype</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtyp</translation>
     </message>
     <message>
         <source>Ready template</source>
-        <translation type="unfinished"></translation>
+        <translation>Färdigmall</translation>
     </message>
     <message>
         <source>File type</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtyp</translation>
     </message>
 </context>
 <context>
@@ -366,11 +366,11 @@
     </message>
     <message>
         <source>New file</source>
-        <translation type="unfinished"></translation>
+        <translation>Ny fil</translation>
     </message>
     <message>
         <source>Open file</source>
-        <translation type="unfinished"></translation>
+        <translation>Öppna fil</translation>
     </message>
 </context>
 <context>
@@ -397,11 +397,11 @@
     </message>
     <message>
         <source>No support for this file type..</source>
-        <translation type="unfinished"></translation>
+        <translation>Denna filtyp stöds inte...</translation>
     </message>
     <message>
         <source>This is autosaved file, open the regular one</source>
-        <translation type="unfinished"></translation>
+        <translation>Detta är en automatiskt sparad fil, öppna den vanliga filen</translation>
     </message>
 </context>
 <context>
@@ -439,7 +439,7 @@
     </message>
     <message>
         <source>Just editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Endast redigerare</translation>
     </message>
 </context>
 <context>
@@ -635,35 +635,35 @@
     </message>
     <message>
         <source>Highlighting</source>
-        <translation type="unfinished"></translation>
+        <translation>Syntaxfärgning</translation>
     </message>
     <message>
         <source>Disabling improves slightly file loading time</source>
-        <translation type="unfinished"></translation>
+        <translation>Inaktivering förbättrar filinläsningstiden något</translation>
     </message>
     <message>
         <source>This is example text how it would look like on editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Denna exempeltext visar hur det kommer att se ut i redigeraren</translation>
     </message>
     <message>
         <source>Behaviour</source>
-        <translation type="unfinished"></translation>
+        <translation>Beteende</translation>
     </message>
     <message>
         <source>Automatic saving</source>
-        <translation type="unfinished"></translation>
+        <translation>Spara automatiskt</translation>
     </message>
     <message>
         <source>File Manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Filhanterare</translation>
     </message>
     <message>
         <source>System file manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Systemets filhanterare</translation>
     </message>
     <message>
         <source>Show hidden files</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa dolda filer</translation>
     </message>
     <message>
         <source>About &amp; Help</source>
@@ -671,31 +671,31 @@
     </message>
     <message>
         <source>Use system file manager in editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Använd systemets filhanterare i redigeraren</translation>
     </message>
     <message>
         <source>Font size</source>
-        <translation type="unfinished"></translation>
+        <translation>Teckenstorlek</translation>
     </message>
     <message>
         <source>Set as default text editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Ange som standardredigerare för text</translation>
     </message>
     <message>
         <source>Unchecking will set Jolla-Notes as default text editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Avaktivering anger Jollas Anteckningar som standardredigerare för text</translation>
     </message>
     <message>
         <source>WARNING</source>
-        <translation type="unfinished"></translation>
+        <translation>VARNING!</translation>
     </message>
     <message>
         <source>Start as Root</source>
-        <translation type="unfinished"></translation>
+        <translation>Starta som root</translation>
     </message>
     <message>
         <source>Please be really carefull when/if editing system files.</source>
-        <translation type="unfinished"></translation>
+        <translation>Var försiktig, vid redigering av systemfiler.</translation>
     </message>
 </context>
 <context>
