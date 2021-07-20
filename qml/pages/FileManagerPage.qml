@@ -38,10 +38,10 @@ Page {
         includeHiddenFiles: includeHidden
         path: rootMode ? "/" : homePath
         active: page.status === PageStatus.Active
-        onError: {
-            showError(traceback)
-            console.log("###", fileName, error)
-        }
+      //  onError: {
+      //      showError(traceback)
+      //      console.log("###", fileName, error)
+      //  }
     }
     SilicaListView {
         id: fileList
